@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dineth Sanjula - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: #4299e1;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #4299e1;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .scroll-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #4299e1;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .scroll-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .scroll-to-top:hover {
+            background: #2b6cb0;
+            transform: translateY(-2px);
+        }
+        
+        .typing-animation {
+            overflow: hidden;
+            border-right: 2px solid #4299e1;
+            white-space: nowrap;
+            animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+        
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #4299e1 }
+        }
+        
+        /* Animation classes */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .animate-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .skill-bar {
+            height: 10px;
+            border-radius: 5px;
+            background: #2d3748;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .skill-progress {
+            height: 100%;
+            border-radius: 5px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: width 1.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+        }
+        
+        /* Floating animation for profile image */
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .floating {
+            animation: floating 6s ease-in-out infinite;
+        }
+        
+        /* Particle container */
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0;
+        }
+        
+        /* Content on top of particles */
+        .content-overlay {
+            position: relative;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-100">
+    <nav class="bg-gray-800 shadow-lg fixed w-full top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0">
+                    <span class="text-2xl font-bold text-gray-100">Dineth Sanjula</span>
+                </div>
+                
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#home" class="nav-link text-gray-300 hover:text-blue-400 px-3 py-2 text-sm font-medium">Home</a>
+                        <a href="#about" class="nav-link text-gray-300 hover:text-blue-400 px-3 py-2 text-sm font-medium">About</a>
+                        <a href="#projects" class="nav-link text-gray-300 hover:text-blue-400 px-3 py-2 text-sm font-medium">Projects</a>
+                        <a href="#contact" class="nav-link text-gray-300 hover:text-blue-400 px-3 py-2 text-sm font-medium">Contact</a>
+                    </div>
+                </div>
+                
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-300 hover:text-blue-400 focus:outline-none">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div id="mobile-menu" class="md:hidden hidden bg-gray-800 border-t border-gray-700">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="#home" class="block px-3 py-2 text-gray-300 hover:text-blue-400">Home</a>
+                <a href="#about" class="block px-3 py-2 text-gray-300 hover:text-blue-400">About</a>
+                <a href="#projects" class="block px-3 py-2 text-gray-300 hover:text-blue-400">Projects</a>
+                <a href="#contact" class="block px-3 py-2 text-gray-300 hover:text-blue-400">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="gradient-bg min-h-screen flex items-center justify-center pt-16">
+        <!-- Particles container -->
+        <div id="particles-js"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center content-overlay">
+            <div class="flex flex-col lg:flex-row items-center justify-between">
+                <div class="lg:w-1/2 text-white mb-8 lg:mb-0">
+                    <h1 class="text-4xl md:text-6xl font-bold mb-4 animate-on-scroll">
+                        Hi, I'm <span class="text-blue-300">Dineth Sanjula</span>
+                    </h1>
+                    <div class="text-xl md:text-2xl mb-6 h-8">
+                        <span class="typing-animation">IT Undergraduate & Software Developer</span>
+                    </div>
+                    <p class="text-lg md:text-xl mb-8 opacity-90 animate-on-scroll">
+                        Passionate about building innovative mobile and web applications with modern technologies
+                    </p>
+                    <div class="space-x-4 animate-on-scroll">
+                        <a href="#projects" class="bg-blue-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-blue-700 transition duration-300">
+                            View My Work
+                        </a>
+                        <a href="#contact" class="border-2 border-blue-400 text-blue-400 px-8 py-3 rounded-full font-semibold hover:bg-blue-400 hover:text-gray-900 transition duration-300">
+                            Get In Touch
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="lg:w-1/2 flex justify-center">
+                    <div class="relative floating">
+                        <div class="w-80 h-80 rounded-full overflow-hidden border-8 border-gray-700 shadow-2xl">
+                            <img src="profile.jpg" alt="Dineth Sanjula" class="w-full h-full object-cover" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIwIiBoZWlnaHQ9IjMyMCIgdmlld0JveD0iMCAwIDMyMCAzMjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzMjAiIGhlaWdodD0iMzIwIiBmaWxsPSIjMWEyMDJjIi8+CjxwYXRoIGQ9Ik0xNjAgMjIwQzE4NC44NTMgMjIwIDIwNSAxOTkuODUzIDIwNSAxNzVDMjA1IDE1MC4xNDcgMTg0Ljg1MyAxMzAgMTYwIDEzMEMxMzUuMTQ3IDEzMCAxMTUgMTUwLjE0NyAxMTUgMTc1QzExNSAxOTkuODUzIDEzNS4xNDcgMjIwIDE2MCAyMjBaIiBmaWxsPSIjNDU1NkIiLz4KPHBhdGggZD0iTTE2MCAyNDBDMTMwLjMgMjQwIDgwIDI1NSA4MCAyODBWMzAwSDI0MFYyODBDMjQwIDI1NSAxODkuNyAyNDAgMTYwIDI0MFoiIGZpbGw9IiM0QTU1NkIiLz4KPHRleHQgeD0iMTYwIiB5PSIxMDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiM0Mjk5RUEiIGZvbnQtc2l6ZT0iMTYiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiI+RGluZXRoIFNhbmp1bGE8L3RleHQ+Cjwvc3ZnPgo='">
+                        </div>
+                        <div class="absolute -top-4 -right-4 w-8 h-8 bg-blue-500 rounded-full animate-pulse"></div>
+                        <div class="absolute -bottom-4 -left-4 w-6 h-6 bg-gray-600 rounded-full animate-pulse"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-20 bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-100 mb-4 animate-on-scroll">About Me</h2>
+                <div class="w-20 h-1 bg-blue-600 mx-auto animate-on-scroll"></div>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="animate-on-scroll">
+                    <h3 class="text-2xl font-semibold text-gray-100 mb-6">Get to know me!</h3>
+                    <p class="text-gray-300 mb-4 leading-relaxed">
+                        I'm <strong>Dineth Sanjula</strong>, a passionate undergraduate student pursuing a B.Sc. (Hons) in Information Technology at the Sri Lanka Institute of Information Technology (SLIIT). Currently in my second year, first semester, I've already gained hands-on experience in developing innovative software solutions.
+                    </p>
+                    <p class="text-gray-300 mb-4 leading-relaxed">
+                        My journey in software development is driven by curiosity and dedication. I specialize in mobile application development using Kotlin and Android Studio, web development with Java, JSP, and modern JavaScript frameworks like React.js and Node.js.
+                    </p>
+                    <p class="text-gray-300 mb-6 leading-relaxed">
+                        I'm always eager to learn new technologies and take on challenging projects that push my boundaries. My goal is to create meaningful applications that solve real-world problems.
+                    </p>
+                    <a href="#contact" class="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition duration-300">
+                        Contact Me
+                    </a>
+                </div>
+                
+                <div class="animate-on-scroll">
+                    <h3 class="text-2xl font-semibold text-gray-100 mb-6">My Skills</h3>
+                    <div class="space-y-4">
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-2">
+                                <span class="text-gray-300 font-medium">Mobile Development (Kotlin/Android)</span>
+                                <span class="text-gray-400">85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress bg-blue-500" data-width="85"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-2">
+                                <span class="text-gray-300 font-medium">Web Development (Java/JSP)</span>
+                                <span class="text-gray-400">80%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress bg-green-500" data-width="80"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-2">
+                                <span class="text-gray-300 font-medium">JavaScript/React.js</span>
+                                <span class="text-gray-400">75%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress bg-yellow-500" data-width="75"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="flex justify-between mb-2">
+                                <span class="text-gray-300 font-medium">Database Management</span>
+                                <span class="text-gray-400">70%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress bg-purple-500" data-width="70"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="py-20 bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-100 mb-4 animate-on-scroll">My Projects</h2>
+                <div class="w-20 h-1 bg-blue-600 mx-auto mb-4 animate-on-scroll"></div>
+                <p class="text-gray-300 max-w-2xl mx-auto animate-on-scroll">
+                    Here are some of the projects I've worked on, showcasing my skills in mobile and web development.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-gray-700 rounded-lg shadow-lg overflow-hidden card-hover project-card animate-on-scroll">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-green-800 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-mobile-alt text-green-300 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-100 ml-4">Personal Finance Tracker</h3>
+                        </div>
+                        <p class="text-gray-300 mb-4">
+                            A comprehensive Android app built with Kotlin for managing personal finances, featuring transaction tracking, budget analysis, and spending insights with interactive charts.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-blue-700 text-blue-200 text-sm rounded-full">Kotlin</span>
+                            <span class="px-3 py-1 bg-green-700 text-green-200 text-sm rounded-full">Android Studio</span>
+                            <span class="px-3 py-1 bg-purple-700 text-purple-200 text-sm rounded-full">XML</span>
+                            <span class="px-3 py-1 bg-orange-700 text-orange-200 text-sm rounded-full">Charts</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-400">Mobile App</span>
+                            <a href="https://github.com/Dineth111" target="_blank" class="text-blue-400 hover:text-blue-300 cursor-pointer">
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-700 rounded-lg shadow-lg overflow-hidden card-hover project-card animate-on-scroll">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-blue-800 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-home text-blue-300 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-100 ml-4">Real Estate Management</h3>
+                        </div>
+                        <p class="text-gray-300 mb-4">
+                            A comprehensive web application for managing real estate properties, featuring agent management, property listings, buyer-seller interactions, and payment processing.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-red-700 text-red-200 text-sm rounded-full">Java</span>
+                            <span class="px-3 py-1 bg-yellow-700 text-yellow-200 text-sm rounded-full">JSP</span>
+                            <span class="px-3 py-1 bg-indigo-700 text-indigo-200 text-sm rounded-full">Bootstrap</span>
+                            <span class="px-3 py-1 bg-green-700 text-green-200 text-sm rounded-full">Spring Boot</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-400">Web Application</span>
+                            <a href="https://github.com/Dineth111" target="_blank" class="text-blue-400 hover:text-blue-300 cursor-pointer">
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-700 rounded-lg shadow-lg overflow-hidden card-hover project-card animate-on-scroll">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-purple-800 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-chart-line text-purple-300 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-100 ml-4">Income & Expense Tracker</h3>
+                        </div>
+                        <p class="text-gray-300 mb-4">
+                            A modern full-stack web application built with MERN stack for comprehensive income and expense management with real-time analytics and reporting features.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-green-700 text-green-200 text-sm rounded-full">MongoDB</span>
+                            <span class="px-3 py-1 bg-gray-600 text-gray-200 text-sm rounded-full">Express.js</span>
+                            <span class="px-3 py-1 bg-blue-700 text-blue-200 text-sm rounded-full">React.js</span>
+                            <span class="px-3 py-1 bg-green-700 text-green-200 text-sm rounded-full">Node.js</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-400 flex items-center">
+                                <span class="w-2 h-2 bg-yellow-400 rounded-full mr-2"></span>
+                                In Progress
+                            </span>
+                            <a href="https://github.com/Dineth111" target="_blank" class="text-blue-400 hover:text-blue-300 cursor-pointer">
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-700 rounded-lg shadow-lg overflow-hidden card-hover project-card animate-on-scroll">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-indigo-800 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-boxes text-indigo-300 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-100 ml-4">Inventory Management</h3>
+                        </div>
+                        <p class="text-gray-300 mb-4">
+                            A comprehensive inventory management system developed as part of IT2080 project, featuring agile development practices, use case diagrams, and requirement engineering.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-red-700 text-red-200 text-sm rounded-full">Java</span>
+                            <span class="px-3 py-1 bg-blue-700 text-blue-200 text-sm rounded-full">UML</span>
+                            <span class="px-3 py-1 bg-green-700 text-green-200 text-sm rounded-full">Agile</span>
+                            <span class="px-3 py-1 bg-purple-700 text-purple-200 text-sm rounded-full">Analysis</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-400">Academic Project</span>
+                            <a href="https://github.com/Dineth111" target="_blank" class="text-blue-400 hover:text-blue-300 cursor-pointer">
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-700 rounded-lg shadow-lg overflow-hidden card-hover project-card animate-on-scroll">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-red-800 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-chart-bar text-red-300 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-100 ml-4">Statistical Analysis</h3>
+                        </div>
+                        <p class="text-gray-300 mb-4">
+                            Data analysis and statistical modeling using R programming for IT2110 - Probability and Statistics, featuring data visualization and statistical graph creation.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-blue-700 text-blue-200 text-sm rounded-full">R Programming</span>
+                            <span class="px-3 py-1 bg-green-700 text-green-200 text-sm rounded-full">Statistics</span>
+                            <span class="px-3 py-1 bg-purple-700 text-purple-200 text-sm rounded-full">Data Analysis</span>
+                            <span class="px-3 py-1 bg-orange-700 text-orange-200 text-sm rounded-full">Visualization</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-400">Data Analysis</span>
+                            <a href="https://github.com/Dineth111" target="_blank" class="text-blue-400 hover:text-blue-300 cursor-pointer">
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-700 rounded-lg shadow-lg overflow-hidden card-hover border-2 border-dashed border-gray-600 project-card animate-on-scroll">
+                    <div class="p-6 text-center">
+                        <div class="w-12 h-12 bg-gray-600 rounded-lg flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-plus text-gray-400 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-100 mb-4">More Projects Coming Soon</h3>
+                        <p class="text-gray-300 mb-4">
+                            I'm constantly working on new projects and learning new technologies. Stay tuned for more exciting developments!
+                        </p>
+                        <span class="text-sm text-gray-400">Future Work</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-20 bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-100 mb-4 animate-on-scroll">Get In Touch</h2>
+                <div class="w-20 h-1 bg-blue-600 mx-auto mb-4 animate-on-scroll"></div>
+                <p class="text-gray-300 max-w-2xl mx-auto animate-on-scroll">
+                    I'm always interested in new opportunities and exciting projects. Feel free to reach out if you'd like to work together!
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-12">
+                <div class="animate-on-scroll">
+                    <h3 class="text-2xl font-semibold text-gray-100 mb-6">Let's talk about everything!</h3>
+                    <p class="text-gray-300 mb-8">
+                        Whether you're looking for a developer, have a question about my projects, or just want to say hi, I'd love to hear from you.
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-blue-800 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-envelope text-blue-300"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-lg font-semibold text-gray-100">Email</h4>
+                                <p class="text-gray-300">dinethsanjula647@gmail.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-green-800 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-phone text-green-300"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-lg font-semibold text-gray-100">Phone</h4>
+                                <p class="text-gray-300">+94 71 142 4377</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-purple-800 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-map-marker-alt text-purple-300"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-lg font-semibold text-gray-100">Location</h4>
+                                <p class="text-gray-300">Kuliyapitiya, Sri Lanka</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="animate-on-scroll">
+                    <form id="contactForm" class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-300 mb-2">Name</label>
+                            <input type="text" id="name" name="name" class="w-full px-4 py-3 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition duration-300 bg-gray-700 text-gray-100" placeholder="Your Name">
+                            <p id="nameError" class="text-red-400 text-sm mt-1 hidden">Please enter your name</p>
+                        </div>
+                        
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-300 mb-2">Email</label>
+                            <input type="email" id="email" name="email" class="w-full px-4 py-3 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition duration-300 bg-gray-700 text-gray-100" placeholder="your.email@example.com">
+                            <p id="emailError" class="text-red-400 text-sm mt-1 hidden">Please enter a valid email address</p>
+                        </div>
+                        
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-300 mb-2">Message</label>
+                            <textarea id="message" name="message" rows="5" class="w-full px-4 py-3 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition duration-300 resize-vertical bg-gray-700 text-gray-100" placeholder="Tell me about your project or just say hello!"></textarea>
+                            <p id="messageError" class="text-red-400 text-sm mt-1 hidden">Please enter your message</p>
+                        </div>
+                        
+                        <button type="submit" class="w-full bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 transition duration-300 font-semibold">
+                            <span id="submitText">Send Message</span>
+                            <span id="submitLoading" class="hidden">
+                                <i class="fas fa-spinner fa-spin mr-2"></i>
+                                Sending...
+                            </span>
+                        </button>
+                        
+                        <div id="formSuccess" class="hidden bg-green-800 border border-green-700 text-green-200 px-4 py-3 rounded">
+                            <i class="fas fa-check-circle mr-2"></i>
+                            Thank you! Your message has been sent successfully.
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">Dineth Sanjula</h3>
+                    <p class="text-gray-400 mb-4">
+                        Passionate IT undergraduate and software developer creating innovative solutions for the digital world.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="https://www.linkedin.com/in/dineth-sanjula/" target="_blank" class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center hover:bg-blue-700 transition duration-300">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://github.com/Dineth111" target="_blank" class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-gray-600 transition duration-300">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://wa.me/94711424377" target="_blank" class="w-10 h-10 bg-green-600 rounded-full flex items-center justify-center hover:bg-green-700 transition duration-300">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="mailto:dinethsanjula647@gmail.com" class="w-10 h-10 bg-red-600 rounded-full flex items-center justify-center hover:bg-red-700 transition duration-300">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-400 hover:text-white transition duration-300">Home</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-white transition duration-300">About</a></li>
+                        <li><a href="#projects" class="text-gray-400 hover:text-white transition duration-300">Projects</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white transition duration-300">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contact Info</h4>
+                    <div class="space-y-2 text-gray-400">
+                        <p><i class="fas fa-envelope mr-2"></i> dinethsanjula647@gmail.com</p>
+                        <p><i class="fas fa-phone mr-2"></i> +94 71 142 4377</p>
+                        <p><i class="fab fa-whatsapp mr-2"></i> WhatsApp: +94 71 142 4377</p>
+                        <p><i class="fas fa-map-marker-alt mr-2"></i> Kuliyapitiya, Sri Lanka</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p class="text-gray-400">
+                    &copy; 2025 Dineth Sanjula. All rights reserved. | Built with passion and modern web technologies.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <div id="scrollToTop" class="scroll-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- Particles.js library -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when clicking on a link
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Scroll to top functionality
+        const scrollToTopBtn = document.getElementById('scrollToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollToTopBtn.classList.add('visible');
+            } else {
+                scrollToTopBtn.classList.remove('visible');
+            }
+        });
+        
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Contact form validation and submission
+        const contactForm = document.getElementById('contactForm');
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+        const messageInput = document.getElementById('message');
+        
+        const nameError = document.getElementById('nameError');
+        const emailError = document.getElementById('emailError');
+        const messageError = document.getElementById('messageError');
+        
+        const submitText = document.getElementById('submitText');
+        const submitLoading = document.getElementById('submitLoading');
+        const formSuccess = document.getElementById('formSuccess');
+
+        // Email validation regex
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        // Real-time validation
+        nameInput.addEventListener('blur', validateName);
+        emailInput.addEventListener('blur', validateEmail);
+        messageInput.addEventListener('blur', validateMessage);
+
+        function validateName() {
+            if (nameInput.value.trim() === '') {
+                showError(nameError, 'Please enter your name');
+                return false;
+            } else if (nameInput.value.trim().length < 2) {
+                showError(nameError, 'Name must be at least 2 characters long');
+                return false;
+            } else {
+                hideError(nameError);
+                return true;
+            }
+        }
+
+        function validateEmail() {
+            if (emailInput.value.trim() === '') {
+                showError(emailError, 'Please enter your email address');
+                return false;
+            } else if (!emailRegex.test(emailInput.value.trim())) {
+                showError(emailError, 'Please enter a valid email address');
+                return false;
+            } else {
+                hideError(emailError);
+                return true;
+            }
+        }
+
+        function validateMessage() {
+            if (messageInput.value.trim() === '') {
+                showError(messageError, 'Please enter your message');
+                return false;
+            } else if (messageInput.value.trim().length < 10) {
+                showError(messageError, 'Message must be at least 10 characters long');
+                return false;
+            } else {
+                hideError(messageError);
+                return true;
+            }
+        }
+
+        function showError(errorElement, message) {
+            errorElement.textContent = message;
+            errorElement.classList.remove('hidden');
+            errorElement.previousElementSibling.classList.add('border-red-500');
+        }
+
+        function hideError(errorElement) {
+            errorElement.classList.add('hidden');
+            errorElement.previousElementSibling.classList.remove('border-red-500');
+        }
+
+        // Form submission
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            // Validate all fields
+            const isNameValid = validateName();
+            const isEmailValid = validateEmail();
+            const isMessageValid = validateMessage();
+            
+            if (!isNameValid || !isEmailValid || !isMessageValid) {
+                return;
+            }
+            
+            // Show loading state
+            submitText.classList.add('hidden');
+            submitLoading.classList.remove('hidden');
+            contactForm.querySelector('button').disabled = true;
+            
+            // Simulate form submission (replace with actual API call)
+            try {
+                await new Promise(resolve => setTimeout(resolve, 2000)); // Simulate API delay
+                
+                // Show success message
+                formSuccess.classList.remove('hidden');
+                contactForm.reset();
+                
+                // Reset form state after 5 seconds
+                setTimeout(() => {
+                    formSuccess.classList.add('hidden');
+                }, 5000);
+                
+            } catch (error) {
+                console.error('Error submitting form:', error);
+                alert('There was an error sending your message. Please try again.');
+            } finally {
+                // Reset button state
+                submitText.classList.remove('hidden');
+                submitLoading.classList.add('hidden');
+                contactForm.querySelector('button').disabled = false;
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offsetTop = target.offsetTop - 70; // Account for fixed header
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Add active state to navigation links based on scroll position
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            const scrollPos = window.pageYOffset + 100;
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.offsetHeight;
+                const sectionId = section.getAttribute('id');
+                
+                if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+                    // Remove active class from all nav links
+                    document.querySelectorAll('.nav-link').forEach(link => {
+                        link.classList.remove('text-blue-400'); // Changed from text-blue-600
+                    });
+                    
+                    // Add active class to current section's nav link
+                    const activeLink = document.querySelector(`a[href="#${sectionId}"]`);
+                    if (activeLink && activeLink.classList.contains('nav-link')) {
+                        activeLink.classList.add('text-blue-400'); // Changed from text-blue-600
+                    }
+                }
+            });
+        });
+
+        // Add loading animation to project cards - now only for visual feedback as links open new tabs
+        const projectCards = document.querySelectorAll('.card-hover');
+        projectCards.forEach(card => {
+            card.addEventListener('click', (e) => {
+                const arrow = card.querySelector('.fa-arrow-right');
+                if (arrow) {
+                    arrow.classList.add('fa-spin');
+                    setTimeout(() => {
+                        arrow.classList.remove('fa-spin');
+                    }, 1000);
+                }
+            });
+        });
+
+        // Initialize typing animation after page load
+        window.addEventListener('load', () => {
+            const typingElement = document.querySelector('.typing-animation');
+            if (typingElement) {
+                typingElement.style.width = '0';
+                setTimeout(() => {
+                    typingElement.style.width = '100%';
+                }, 500);
+            }
+        });
+
+        // Add parallax effect to hero section
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.getElementById('home');
+            if (hero && scrolled < hero.offsetHeight) {
+                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+        
+        // =============== NEW ANIMATIONS ===============
+        
+        // Initialize particles.js
+        particlesJS('particles-js', {
+            particles: {
+                number: {
+                    value: 80,
+                    density: {
+                        enable: true,
+                        value_area: 800
+                    }
+                },
+                color: {
+                    value: "#4299e1"
+                },
+                shape: {
+                    type: "circle",
+                    stroke: {
+                        width: 0,
+                        color: "#000000"
+                    }
+                },
+                opacity: {
+                    value: 0.5,
+                    random: true,
+                    anim: {
+                        enable: true,
+                        speed: 1,
+                        opacity_min: 0.1,
+                        sync: false
+                    }
+                },
+                size: {
+                    value: 3,
+                    random: true,
+                    anim: {
+                        enable: true,
+                        speed: 2,
+                        size_min: 0.3,
+                        sync: false
+                    }
+                },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: "#4299e1",
+                    opacity: 0.4,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 1,
+                    direction: "none",
+                    random: true,
+                    straight: false,
+                    out_mode: "out",
+                    bounce: false,
+                    attract: {
+                        enable: false,
+                        rotateX: 600,
+                        rotateY: 1200
+                    }
+                }
+            },
+            interactivity: {
+                detect_on: "canvas",
+                events: {
+                    onhover: {
+                        enable: true,
+                        mode: "grab"
+                    },
+                    onclick: {
+                        enable: true,
+                        mode: "push"
+                    },
+                    resize: true
+                },
+                modes: {
+                    grab: {
+                        distance: 140,
+                        line_linked: {
+                            opacity: 1
+                        }
+                    },
+                    push: {
+                        particles_nb: 4
+                    }
+                }
+            },
+            retina_detect: true
+        });
+        
+        // Scroll animation for elements
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.animate-on-scroll');
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if (elementPosition < screenPosition) {
+                    element.classList.add('animate-in');
+                }
+            });
+        }
+        
+        // Initialize scroll animations
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+        
+        // Animate skill bars on scroll
+        function animateSkillBars() {
+            const skillBars = document.querySelectorAll('.skill-progress');
+            const aboutSection = document.getElementById('about');
+            const aboutPosition = aboutSection.getBoundingClientRect().top;
+            const screenPosition = window.innerHeight / 1.3;
+            
+            if (aboutPosition < screenPosition) {
+                skillBars.forEach(bar => {
+                    const width = bar.getAttribute('data-width') + '%';
+                    bar.style.width = width;
+                });
+            }
+        }
+        
+        window.addEventListener('scroll', animateSkillBars);
+        window.addEventListener('load', animateSkillBars);
+        
+        // Staggered animation for project cards
+        function animateProjectCards() {
+            const projectCards = document.querySelectorAll('.project-card');
+            const projectsSection = document.getElementById('projects');
+            const projectsPosition = projectsSection.getBoundingClientRect().top;
+            const screenPosition = window.innerHeight / 1.3;
+            
+            if (projectsPosition < screenPosition) {
+                projectCards.forEach((card, index) => {
+                    setTimeout(() => {
+                        card.classList.add('animate-in');
+                    }, index * 150); // 150ms delay between each card
+                });
+            }
+        }
+        
+        window.addEventListener('scroll', animateProjectCards);
+        window.addEventListener('load', animateProjectCards);
+        
+        // Add floating class to profile image
+        const profileImg = document.querySelector('.floating');
+        if (profileImg) {
+            profileImg.classList.add('floating');
+        }
+        
+        // Form input animation
+        const formInputs = document.querySelectorAll('input, textarea');
+        formInputs.forEach(input => {
+            input.addEventListener('focus', () => {
+                input.parentElement.classList.add('animate-pulse');
+            });
+            
+            input.addEventListener('blur', () => {
+                input.parentElement.classList.remove('animate-pulse');
+            });
+        });
+    </script>
+</body>
+</html>
