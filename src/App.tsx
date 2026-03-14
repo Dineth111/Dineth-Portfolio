@@ -128,11 +128,21 @@ const MagneticButton = ({ children, className, href }: { children: React.ReactNo
         </motion.div>
     );
 
-    return href ? (
-        <a href={href} download={href.endsWith('.pdf') ? 'Dineth_Sanjula_Resume.pdf' : undefined} target="_blank" rel="noopener noreferrer">
+    if (!href) return content;
+
+    // Check if it's an internal anchor link (starts with #)
+    const isInternal = href.startsWith('#');
+    
+    return (
+        <a 
+            href={href} 
+            download={href.endsWith('.pdf') ? 'Dineth_Sanjula_Resume.pdf' : undefined}
+            target={isInternal ? undefined : "_blank"}
+            rel={isInternal ? undefined : "noopener noreferrer"}
+        >
             {content}
         </a>
-    ) : content;
+    );
 };
 
 const TechStack = () => {
