@@ -85,7 +85,7 @@ const CustomCursor = () => {
 
     return (
         <motion.div
-            className="fixed top-0 left-0 w-4 h-4 rounded-full pointer-events-none z-[10000] mix-blend-difference hidden md:flex items-center justify-center text-[10px] font-black tracking-tighter"
+            className="fixed top-0 left-0 w-4 h-4 rounded-full pointer-events-none z-[10000] mix-blend-difference hidden md:flex items-center justify-center text-[10px] font-black tracking-tight"
             animate={{
                 x: position.x - (isHovering ? 40 : 8),
                 y: position.y - (isHovering ? 40 : 8),
@@ -150,7 +150,7 @@ const TechStack = () => {
                 className="flex gap-24 whitespace-nowrap"
             >
                 {[...skills, ...skills, ...skills].map((skill, idx) => (
-                    <span key={idx} className="text-5xl md:text-8xl font-black text-white/5 uppercase tracking-tighter hover:text-emerald-500/20 transition-colors cursor-default">
+                    <span key={idx} className="text-5xl md:text-8xl font-black text-white/5 uppercase tracking-tight hover:text-emerald-500/20 transition-colors cursor-default">
                         {skill} <span className="text-emerald-500/20 px-10">✦</span>
                     </span>
                 ))}
@@ -189,7 +189,7 @@ const Navbar = () => {
                     <div className="w-10 h-10 bg-emerald-600 rounded-xl flex items-center justify-center text-white font-black group-hover:rotate-12 transition-transform shadow-[0_0_20px_rgba(16,185,129,0.3)]">
                         D
                     </div>
-                    <span className="text-xl font-bold tracking-tightest uppercase hidden sm:block">Sanjula<span className="text-emerald-500">.</span></span>
+                    <span className="text-xl font-bold tracking-tight uppercase hidden sm:block">Sanjula<span className="text-emerald-500">.</span></span>
                 </motion.div>
 
                 <div className="hidden md:flex items-center space-x-12">
@@ -231,7 +231,7 @@ const Navbar = () => {
                                 key={link.name}
                                 href={link.href}
                                 onClick={() => setIsMobileMenuOpen(false)}
-                                className="text-5xl font-black uppercase tracking-tighter hover:text-emerald-500 transition-colors"
+                                className="text-5xl font-black uppercase tracking-tight hover:text-emerald-500 transition-colors"
                             >
                                 {link.name}
                             </a>
@@ -273,7 +273,7 @@ const Hero = () => {
                         <span className="text-[10px] font-black uppercase tracking-[0.4em] text-slate-400">Web & Mobile Developer</span>
                     </motion.div>
 
-                    <h1 className="text-7xl md:text-[100px] font-black tracking-tightest leading-[0.9] mb-12 uppercase italic">
+                    <h1 className="text-7xl md:text-[100px] font-black tracking-tight leading-[0.9] mb-12 uppercase italic">
                         Dineth <br />
                         <span className="text-emerald-500">Sanjula<span className="text-white">.</span></span>
                     </h1>
@@ -344,7 +344,7 @@ const About = () => {
             <div className="max-w-7xl mx-auto">
                 <div className="mb-24">
                     <span className="text-emerald-500 text-[10px] font-black uppercase tracking-[0.8em] block mb-6">About Me</span>
-                    <h2 className="text-6xl md:text-[100px] font-black tracking-tightest leading-none uppercase">
+                    <h2 className="text-6xl md:text-[100px] font-black tracking-tight leading-none uppercase">
                         My <span className="text-white/10 italic">Core</span> <br />Skills.
                     </h2>
                 </div>
@@ -355,8 +355,8 @@ const About = () => {
                         className="lg:col-span-2 glass-card p-12 rounded-[50px] flex flex-col justify-end group border-emerald-500/10"
                     >
                         <Briefcase className="w-12 h-12 text-emerald-500 mb-10 group-hover:scale-110 transition-transform" />
-                        <h3 className="text-3xl font-black uppercase tracking-tighter mb-4 italic">The Journey</h3>
-                        <p className="text-slate-400 font-light leading-relaxed max-w-xl">
+                        <h3 className="text-3xl font-black uppercase tracking-tight mb-4 italic">The Journey</h3>
+                        <p className="text-slate-400 font-light leading-[1.8] [word-spacing:0.12em] tracking-wide max-w-xl">
                             <span className="text-white font-medium">Dineth Sanjula</span> — I am currently pursuing my IT degree at <span className="text-white font-medium">SLIIT Kandy</span>. My journey in development started with a curiosity for how complex systems work. Today, I am a dedicated <span className="text-white font-medium">MERN Stack Enthusiast</span> committed to building software that is not only functional but also visually captivating and highly efficient.
                         </p>
                     </motion.div>
@@ -367,8 +367,8 @@ const About = () => {
                     >
                         <div className="absolute inset-0 bg-noise opacity-20" />
                         <Terminal className="w-20 h-20 mb-8 opacity-20 absolute -top-4 -right-4 group-hover:rotate-12 transition-transform" />
-                        <h3 className="text-4xl font-black uppercase tracking-tighter leading-none mb-4 italic">MERN <br />Expert</h3>
-                        <span className="text-[10px] font-black uppercase tracking-[0.4em] opacity-60">Full-Stack Capability</span>
+                        <h3 className="text-4xl font-black uppercase tracking-tight leading-none mb-4 italic">MERN <br />Expert</h3>
+                        <span className="text-[10px] font-black uppercase tracking-[0.3em] [word-spacing:0.5em] opacity-60">Full-Stack Capability</span>
                     </motion.div>
 
                     <motion.div
@@ -376,7 +376,7 @@ const About = () => {
                         className="glass-card p-12 rounded-[50px] flex flex-col justify-center border-emerald-500/10 overflow-hidden relative"
                     >
                         <Smartphone className="w-10 h-10 text-emerald-500 mb-6" />
-                        <h4 className="text-xl font-bold uppercase tracking-tighter mb-2">Mobile Apps</h4>
+                        <h4 className="text-xl font-bold uppercase tracking-tight mb-2">Mobile Apps</h4>
                         <p className="text-sm text-slate-500 leading-relaxed font-light">Cross-platform development using Kotlin & Dart for high-performance applications.</p>
                     </motion.div>
 
@@ -403,7 +403,7 @@ const About = () => {
                         className="glass-card p-12 rounded-[50px] flex flex-col justify-center border-emerald-500/10"
                     >
                         <Layout className="w-10 h-10 text-emerald-500 mb-6" />
-                        <h4 className="text-xl font-bold uppercase tracking-tighter mb-2">My Vision</h4>
+                        <h4 className="text-xl font-bold uppercase tracking-tight mb-2">My Vision</h4>
                         <p className="text-sm text-slate-500 leading-relaxed font-light">To become a world-class Full Stack Architect, contributing to innovative open-source projects and enterprise-level applications.</p>
                     </motion.div>
 
@@ -412,7 +412,7 @@ const About = () => {
                         className="glass-card p-12 rounded-[50px] flex flex-col justify-center border-emerald-500/10"
                     >
                         <Code2 className="w-10 h-10 text-emerald-500 mb-6" />
-                        <h4 className="text-xl font-bold uppercase tracking-tighter mb-2">Core Values</h4>
+                        <h4 className="text-xl font-bold uppercase tracking-tight mb-2">Core Values</h4>
                         <p className="text-sm text-slate-500 leading-relaxed font-light">Clean code Architecture, scalability-first mindset, and obsessive attention to pixel-perfect design elements.</p>
                     </motion.div>
 
@@ -421,7 +421,7 @@ const About = () => {
                         className="lg:col-span-1 glass-card p-12 rounded-[50px] flex flex-col justify-center border-emerald-500/10 bg-white/5"
                     >
                         <Zap className="w-10 h-10 text-emerald-500 mb-6" />
-                        <h4 className="text-xl font-bold uppercase tracking-tighter mb-2">Ongoing Research</h4>
+                        <h4 className="text-xl font-bold uppercase tracking-tight mb-2">Ongoing Research</h4>
                         <p className="text-sm text-slate-500 leading-relaxed font-light">Currently exploring Emerging Technologies and AI-driven development workflows to stay ahead in the digital landscape.</p>
                     </motion.div>
 
@@ -433,7 +433,7 @@ const About = () => {
                             <div className="w-12 h-12 bg-emerald-500/10 rounded-xl flex items-center justify-center">
                                 <Globe className="text-emerald-500" />
                             </div>
-                            <h4 className="text-xl font-bold uppercase tracking-tighter">Global Outreach</h4>
+                            <h4 className="text-xl font-bold uppercase tracking-tight">Global Outreach</h4>
                         </div>
                         <p className="text-slate-400 font-light leading-relaxed">Collaborating with international teams and clients to deliver digital solutions that transcend borders. Focused on cross-cultural design systems and inclusive accessibility standards.</p>
                     </motion.div>
@@ -527,7 +527,7 @@ const Skills = () => {
             <div className="max-w-7xl mx-auto flex flex-col items-center">
                 <div className="text-center mb-44 relative z-10">
                     <span className="text-emerald-500 text-[10px] font-black uppercase tracking-[1em] block mb-6">My Skills</span>
-                    <h2 className="text-6xl md:text-[100px] font-black tracking-tightest leading-none uppercase text-white">
+                    <h2 className="text-6xl md:text-[100px] font-black tracking-tight leading-none uppercase text-white">
                         My Technical <br /><span className="text-white/10 italic">Skills.</span>
                     </h2>
                 </div>
@@ -551,7 +551,7 @@ const Skills = () => {
                             >
                                 {React.cloneElement(activeSkill.icon as React.ReactElement, { size: 40 })}
                             </motion.div>
-                            <h3 className="text-white font-black text-2xl mt-4 uppercase tracking-tighter italic">{activeSkill.name}</h3>
+                            <h3 className="text-white font-black text-2xl mt-4 uppercase tracking-tight italic">{activeSkill.name}</h3>
                             <span className="bg-emerald-500/10 text-emerald-400 text-[9px] font-bold px-3 py-1 rounded-full uppercase tracking-widest mt-2">{activeSkill.level}</span>
                             <p className="text-slate-500 text-[10px] leading-relaxed mt-4 font-light max-w-[80%] mx-auto">{activeSkill.details}</p>
                         </motion.div>
@@ -636,7 +636,7 @@ const ProjectCard = ({ project, index }: { project: Project, index: number }) =>
                 </div>
 
                 <h3 className="text-4xl font-black text-white mb-6 uppercase tracking-tight italic">{project.title}</h3>
-                <p className="text-slate-400 font-light text-sm mb-10 leading-relaxed max-w-sm">{project.description}</p>
+                <p className="text-slate-400 font-light text-sm mb-10 leading-[1.8] [word-spacing:0.12em] tracking-wide max-w-sm">{project.description}</p>
 
                 <div className="flex flex-wrap gap-2 mb-10">
                     {project.tags.map(tag => (
@@ -716,13 +716,13 @@ const Projects = () => {
             <div className="max-w-7xl mx-auto">
                 <div className="mb-32">
                     <span className="text-emerald-500 text-xs font-black uppercase tracking-[0.5em] block mb-6">My Work</span>
-                    <h2 className="text-6xl md:text-[120px] font-black tracking-tightest leading-none uppercase">
+                    <h2 className="text-6xl md:text-[120px] font-black tracking-tight leading-none uppercase">
                         Selected <br /><span className="text-slate-900 border-text">Projects.</span>
                     </h2>
                 </div>
                 <div className="max-w-xs text-right hidden lg:block">
-                    <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest leading-relaxed mb-8">Selected works representing the intersection of high-end design and robust performance architecture.</p>
-                    <MagneticButton className="px-10 py-4 bg-white/5 border border-white/10 rounded-full text-[9px] font-black uppercase tracking-widest hover:bg-white/10">Browse GitHub Archive</MagneticButton>
+                    <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest leading-relaxed [word-spacing:0.2em] mb-8">Selected works representing the intersection of high-end design and robust performance architecture.</p>
+                    <MagneticButton className="px-10 py-4 bg-white/5 border border-white/10 rounded-full text-[9px] font-black uppercase tracking-widest [word-spacing:0.2em] hover:bg-white/10">Browse GitHub Archive</MagneticButton>
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-8">
@@ -801,7 +801,7 @@ const Experience = () => {
             <div className="max-w-7xl mx-auto border-t border-white/5 pt-32">
                 <div className="flex flex-col lg:flex-row gap-20">
                     <div className="lg:w-1/3">
-                        <h2 className="text-7xl font-black uppercase tracking-tightest leading-none mb-10">My <br /><span className="text-emerald-500">Experience.</span></h2>
+                        <h2 className="text-7xl font-black uppercase tracking-tight leading-none mb-10">My <br /><span className="text-emerald-500">Experience.</span></h2>
                         <MagneticButton
                             href="/resume.pdf"
                             className="inline-flex items-center gap-4 px-10 py-5 bg-emerald-600 rounded-full text-[10px] font-black uppercase tracking-widest shadow-2xl shadow-emerald-900/50"
@@ -826,15 +826,15 @@ const Experience = () => {
                                     <div className="flex-1">
                                         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4">
                                             <div>
-                                                <h3 className="text-3xl font-black uppercase tracking-tighter italic">{exp.title}</h3>
+                                                <h3 className="text-3xl font-black uppercase tracking-tight italic">{exp.title}</h3>
                                                 <p className="text-[10px] uppercase font-bold text-slate-500 tracking-widest">{exp.company}</p>
                                             </div>
                                             <div className="text-right">
-                                                <span className="text-[9px] font-black tracking-widest uppercase bg-emerald-500/10 text-emerald-500 px-3 py-1 rounded-full border border-emerald-500/20">{exp.period}</span>
+                                                <span className="text-[9px] font-black tracking-widest uppercase [word-spacing:0.2em] bg-emerald-500/10 text-emerald-500 px-3 py-1 rounded-full border border-emerald-500/20">{exp.period}</span>
                                                 <p className="text-[8px] font-black tracking-[0.2em] text-slate-600 uppercase mt-2">{exp.type}</p>
                                             </div>
                                         </div>
-                                        <p className="text-sm text-slate-400 font-light leading-relaxed max-w-md mb-6">{exp.details}</p>
+                                        <p className="text-sm text-slate-400 font-light leading-[1.8] [word-spacing:0.12em] tracking-wide max-w-md mb-6">{exp.details}</p>
 
                                         <ul className="mb-6 space-y-2">
                                             {exp.achievements.map((item: string, i: number) => (
@@ -885,14 +885,14 @@ const Contact = () => {
             <div className="max-w-7xl mx-auto relative z-10">
                 <div className="text-center mb-32">
                     <span className="text-emerald-500 text-[10px] font-black uppercase tracking-[1em] block mb-10 text-center mx-auto">Contact</span>
-                    <h2 className="text-7xl md:text-[150px] font-black tracking-tightest leading-none uppercase italic border-text mx-auto">Let's Work<span className="text-white font-black not-italic">.</span></h2>
+                    <h2 className="text-7xl md:text-[150px] font-black tracking-tight leading-none uppercase italic border-text mx-auto">Let's Work<span className="text-white font-black not-italic">.</span></h2>
                 </div>
 
                 <div className="grid lg:grid-cols-2 gap-10">
                     <div className="glass-card p-16 rounded-[60px] flex flex-col justify-between group overflow-hidden relative border-emerald-500/10">
                         <div className="absolute top-[-20%] right-[-10%] w-[300px] h-[300px] bg-emerald-600/10 blur-[100px] rounded-full" />
                         <div>
-                            <h3 className="text-4xl font-black uppercase tracking-tighter mb-4 italic">Contact Info</h3>
+                            <h3 className="text-4xl font-black uppercase tracking-tight mb-4 italic">Contact Info</h3>
                             <p className="text-slate-400 font-light text-xl max-w-sm mb-12">I'm available for full-time roles, freelance projects, and tech consulting.</p>
 
                             <div className="space-y-8">
@@ -902,7 +902,7 @@ const Contact = () => {
                                     </div>
                                     <div>
                                         <p className="text-[10px] uppercase font-bold text-slate-500 tracking-widest">Email Me</p>
-                                        <span className="text-sm font-bold tracking-widest uppercase">dinethsanjula647@gmail.com</span>
+                                        <span className="text-sm font-bold tracking-widest uppercase [word-spacing:0.2em]">dinethsanjula647@gmail.com</span>
                                     </div>
                                 </div>
 
@@ -912,7 +912,7 @@ const Contact = () => {
                                     </div>
                                     <div>
                                         <p className="text-[10px] uppercase font-bold text-slate-500 tracking-widest">WhatsApp</p>
-                                        <span className="text-sm font-bold tracking-widest uppercase">+94 76 632 0647</span>
+                                        <span className="text-sm font-bold tracking-widest uppercase [word-spacing:0.2em]">+94 76 632 0647</span>
                                     </div>
                                 </div>
 
@@ -922,7 +922,7 @@ const Contact = () => {
                                     </div>
                                     <div>
                                         <p className="text-[10px] uppercase font-bold text-slate-500 tracking-widest">Location</p>
-                                        <span className="text-sm font-bold tracking-widest uppercase">Kandy, Sri Lanka</span>
+                                        <span className="text-sm font-bold tracking-widest uppercase [word-spacing:0.2em]">Kandy, Sri Lanka</span>
                                     </div>
                                 </div>
 
@@ -931,11 +931,11 @@ const Contact = () => {
                                     <div className="grid grid-cols-2 gap-4">
                                         <div>
                                             <p className="text-[9px] text-slate-400 uppercase font-black mb-1">Mon - Fri</p>
-                                            <p className="text-xs font-bold text-white uppercase tracking-tighter italic">09:00 AM - 06:00 PM</p>
+                                            <p className="text-xs font-bold text-white uppercase tracking-tight italic">09:00 AM - 06:00 PM</p>
                                         </div>
                                         <div>
                                             <p className="text-[9px] text-slate-400 uppercase font-black mb-1">Response Time</p>
-                                            <p className="text-xs font-bold text-emerald-500 uppercase tracking-tighter italic">Within 24 Hours</p>
+                                            <p className="text-xs font-bold text-emerald-500 uppercase tracking-tight italic">Within 24 Hours</p>
                                         </div>
                                     </div>
                                 </div>
@@ -1040,7 +1040,7 @@ const Footer = () => {
                     <div className="h-10 w-px bg-white/5" />
                     <div className="text-right">
                         <span className="text-[8px] font-black uppercase tracking-[0.4em] text-emerald-500 block mb-1">Status</span>
-                        <span className="text-white text-xs font-bold uppercase tracking-widest group">Available for Hire</span>
+                        <span className="text-white text-xs font-bold uppercase tracking-widest [word-spacing:0.3em] group">Available for Hire</span>
                     </div>
                 </div>
             </div>

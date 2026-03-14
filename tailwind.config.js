@@ -7,8 +7,17 @@ export default {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Inter', 'system-ui', 'sans-serif'],
+                outfit: ['Outfit', 'sans-serif'],
+                sans: ['Outfit', 'sans-serif'],
             },
+            letterSpacing: {
+                tightest: '-0.06em',
+                tighter: '-0.04em',
+                tight: '-0.02em',
+                wide: '0.02em',
+                wider: '0.05em',
+                widest: '0.2em',
+            }
         },
     },
     plugins: [],
