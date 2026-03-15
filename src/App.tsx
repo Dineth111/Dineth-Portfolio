@@ -916,13 +916,13 @@ const Contact = () => {
                                     </div>
                                 </div>
 
-                                <div className="flex items-center gap-6 text-white group/link cursor-pointer" onClick={() => window.open("https://wa.me/94766320647", "_blank")}>
+                                <div className="flex items-center gap-6 text-white group/link cursor-pointer" onClick={() => window.open("https://wa.me/94711424377", "_blank")}>
                                     <div className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center group-hover/link:bg-emerald-600 transition-colors">
                                         <MessageSquare size={24} />
                                     </div>
                                     <div>
                                         <p className="text-[10px] uppercase font-bold text-slate-500 tracking-widest">WhatsApp</p>
-                                        <span className="text-sm font-bold tracking-widest uppercase [word-spacing:0.2em]">+94 76 632 0647</span>
+                                        <span className="text-sm font-bold tracking-widest uppercase [word-spacing:0.2em]">0711424377</span>
                                     </div>
                                 </div>
 
@@ -932,7 +932,7 @@ const Contact = () => {
                                     </div>
                                     <div>
                                         <p className="text-[10px] uppercase font-bold text-slate-500 tracking-widest">Location</p>
-                                        <span className="text-sm font-bold tracking-widest uppercase [word-spacing:0.2em]">Kandy, Sri Lanka</span>
+                                        <span className="text-sm font-bold tracking-widest uppercase [word-spacing:0.2em]">Kuliyaptitiya</span>
                                     </div>
                                 </div>
 
