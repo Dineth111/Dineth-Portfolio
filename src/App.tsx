@@ -354,8 +354,8 @@ const About = () => {
             <div className="max-w-7xl mx-auto">
                 <div className="mb-24">
                     <span className="text-emerald-500 text-[10px] font-black uppercase tracking-[0.8em] block mb-6">About Me</span>
-                    <h2 className="text-6xl md:text-[100px] font-black tracking-tight leading-none uppercase">
-                        My <span className="text-white/10 italic">Core</span> <br />Skills.
+                    <h2 className="text-6xl md:text-[100px] font-black tracking-tight leading-none uppercase inline-block bg-emerald-600 px-8 py-6 md:px-12 md:py-8 rounded-2xl">
+                        My <span className="text-white italic">Core</span> <br />Skills<span className="text-white">.</span>
                     </h2>
                 </div>
 
@@ -367,7 +367,7 @@ const About = () => {
                         <Briefcase className="w-12 h-12 text-emerald-500 mb-10 group-hover:scale-110 transition-transform" />
                         <h3 className="text-3xl font-black uppercase tracking-tight mb-4 italic">The Journey</h3>
                         <p className="text-slate-400 font-light leading-[1.8] [word-spacing:0.12em] tracking-wide max-w-xl">
-                            <span className="text-white font-medium">Dineth Sanjula</span> — I am currently pursuing my IT degree at <span className="text-white font-medium">SLIIT Kandy</span>. My journey in development started with a curiosity for how complex systems work. Today, I am a dedicated <span className="text-white font-medium">MERN Stack Enthusiast</span> committed to building software that is not only functional but also visually captivating and highly efficient.
+                            <span className="text-white font-medium">Dineth Sanjula</span> — Motivated IT undergraduate with hands-on experience in software development and project management at <span className="text-white font-medium">AASL IT Division</span>. I'm comfortable working with cross-functional teams, coordinating tasks, and tracking progress. A quick learner with strong communication skills and a genuine interest in building well-organized, impact-driven tech projects.
                         </p>
                     </motion.div>
 
@@ -537,8 +537,8 @@ const Skills = () => {
             <div className="max-w-7xl mx-auto flex flex-col items-center">
                 <div className="text-center mb-44 relative z-10">
                     <span className="text-emerald-500 text-[10px] font-black uppercase tracking-[1em] block mb-6">My Skills</span>
-                    <h2 className="text-6xl md:text-[100px] font-black tracking-tight leading-none uppercase text-white">
-                        My Technical <br /><span className="text-white/10 italic">Skills.</span>
+                    <h2 className="text-6xl md:text-[100px] font-black tracking-tight leading-none uppercase text-white inline-block bg-emerald-600 px-8 py-6 md:px-12 md:py-8 rounded-2xl mx-auto">
+                        My Technical <br /><span className="text-white italic">Skills.</span>
                     </h2>
                 </div>
 
@@ -672,7 +672,39 @@ const ProjectCard = ({ project, index }: { project: Project, index: number }) =>
 const Projects = () => {
     const projects: Project[] = [
         {
-            title: "Tournament System",
+            title: "Customer Care Management System",
+            category: "Enterprise Web",
+            description: "Web-based system with authentication and full CRUD operations for managing customer inquiries efficiently.",
+            image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=800",
+            tags: ["Java", "JSP", "Servlets", "MySQL"],
+            link: "https://github.com/Dineth111/Group-Project-Y2.S1-"
+        },
+        {
+            title: "Personal Finance Tracker",
+            category: "Mobile App",
+            description: "Mobile app to manage income, expenses, budgets, and generate financial reports for real-world tracking use cases.",
+            image: "https://images.unsplash.com/photo-1518607882905-010e92e2e09d?auto=format&fit=crop&q=80&w=800",
+            tags: ["Android", "Kotlin", "Local Database"],
+            link: "https://github.com/Dineth111/financeapp"
+        },
+        {
+            title: "Food Ordering App",
+            category: "Mobile App",
+            description: "Android application enabling menu browsing, cart management, and order tracking with seamless user experience.",
+            image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&q=80&w=800",
+            tags: ["Android", "Kotlin", "Firebase"],
+            link: "https://github.com/Dineth111/FoddOrdering_App"
+        },
+        {
+            title: "Income & Expense Management",
+            category: "MERN Stack",
+            description: "Full-stack web application featuring financial reports, interactive charts, and comprehensive expense tracking.",
+            image: "https://images.unsplash.com/photo-1526304640581-d334cdbbf35f?auto=format&fit=crop&q=80&w=800",
+            tags: ["MongoDB", "Express", "React", "Node.js"],
+            link: "https://github.com/Dineth111/Income-and-Expense-management-system"
+        },
+        {
+            title: "Tournament Management System",
             category: "Logic Engine",
             description: "Advanced tournament management engine with automated scheduling and real-time ranking algorithms.",
             image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80&w=800",
@@ -696,27 +728,19 @@ const Projects = () => {
             link: "https://github.com/Dineth111/srilanka-airport-website"
         },
         {
-            title: "Food Cloud App",
-            category: "MERN Stack",
-            description: "Complete order-to-delivery ecosystem featuring real-time kitchen tracking systems.",
-            image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&q=80&w=800",
-            tags: ["MongoDB", "Express", "React"],
-            link: "https://github.com/Dineth111/food-ordering-app"
-        },
-        {
-            title: "Inventory OS",
+            title: "Inventory Management System",
             category: "System Dev",
-            description: "Cross-modular inventory system integrated with employee performance analytics.",
+            description: "Cross-modular inventory system integrated with employee performance analytics and real-time tracking.",
             image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=800",
             tags: ["MERN", "Redux", "JWT"],
             link: "https://github.com/Dineth111/Inventory_Management_System-MERN-STAC-Project"
         },
         {
-            title: "AI Vision Gen",
+            title: "AI Image Generator",
             category: "Gen AI",
-            description: "Cloud-based visual generation platform using advanced transformers for assets.",
+            description: "Cloud-based visual generation platform using advanced AI transformers for creative asset generation.",
             image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800",
-            tags: ["OpenAI API", "Node", "React"],
+            tags: ["OpenAI API", "Node.js", "React"],
             link: "https://github.com/Dineth111/AI-Image-Genarator"
         }
     ];
@@ -726,8 +750,8 @@ const Projects = () => {
             <div className="max-w-7xl mx-auto">
                 <div className="mb-32">
                     <span className="text-emerald-500 text-xs font-black uppercase tracking-[0.5em] block mb-6">My Work</span>
-                    <h2 className="text-6xl md:text-[120px] font-black tracking-tight leading-none uppercase">
-                        Selected <br /><span className="text-slate-900 border-text">Projects.</span>
+                    <h2 className="text-6xl md:text-[120px] font-black tracking-tight leading-none uppercase inline-block bg-emerald-600 px-8 py-6 md:px-12 md:py-8 rounded-2xl">
+                        Selected <br /><span className="text-white">Projects.</span>
                     </h2>
                 </div>
                 <div className="max-w-xs text-right hidden lg:block">
@@ -748,61 +772,64 @@ const Projects = () => {
 const Experience = () => {
     const experiences = [
         {
-            title: "MERN Stack Developer",
-            company: "SLIIT KANDY UNI",
-            period: "2023 - PRESENT",
-            type: "ACADEMIC LEAD",
-            details: "Leading specialized web projects using the MERN ecosystem. I design database structures, build robust APIs, and create high-end user interfaces.",
-            achievements: [
-                "Developed a student portal handling 500+ daily active users.",
-                "Optimized database queries, reducing load times by 40%.",
-                "Integrated real-time notification systems using Socket.io."
-            ],
-            tech: ["React.js", "Node.js", "Express", "MongoDB", "Redux"],
-            icon: <Zap className="text-emerald-500" />
-        },
-        {
-            title: "Backend Architect",
-            company: "System Design Lab",
-            period: "2022 - 2023",
+            title: "Project Management Intern",
+            company: "Airport & Aviation Services (AASL) – IT Division",
+            period: "2025 - PRESENT",
             type: "PROFESSIONAL",
-            details: "Architecting scalable server-side systems with a focus on high availability and secure data flow. I implement complex business logic and microservices.",
+            details: "Assisting in planning and coordinating IT projects across multiple stakeholders while tracking progress and supporting requirement gathering.",
             achievements: [
-                "Designed a scalable microservices architecture for a logistics app.",
-                "Implemented secure JWT-based authentication protocols.",
-                "Automated CI/CD pipelines using GitHub Actions."
+                "Assist in planning and coordinating IT projects across multiple stakeholders",
+                "Track project progress, timelines, and deliverables using structured documentation",
+                "Support requirement gathering and translate business needs into technical tasks",
+                "Collaborate with developers, technical teams, and supervisors to ensure smooth execution"
             ],
-            tech: ["Java Spring Boot", "MySQL", "AWS", "Microservices"],
-            icon: <Database className="text-emerald-500" />
+            tech: ["Project Management", "Documentation", "Stakeholder Coordination", "Team Collaboration"],
+            icon: <Briefcase className="text-emerald-500" />
         },
         {
-            title: "Software Developer",
-            company: "Freelance Solution",
-            period: "2021 - PRESENT",
-            type: "FREELANCE",
-            details: "Creating custom digital tools for international clients. I focus on writing secure code and building mobile-first applications that solve real business problems.",
+            title: "Intern Web & Mobile Developer",
+            company: "Freelance / Academic Projects",
+            period: "2023 - PRESENT",
+            type: "ACADEMIC & FREELANCE",
+            details: "Developing full-stack web applications and mobile apps while applying UI/UX principles to create clean, responsive interfaces.",
             achievements: [
-                "Delivered over 10+ professional web projects for global clients.",
-                "Built cross-platform apps using Flutter and Firebase.",
-                "Provided technical consultancy for local startups."
+                "Developed full-stack web applications using the MERN stack",
+                "Built Android applications using Kotlin and XML in Android Studio",
+                "Designed and implemented backend systems using PHP & MySQL",
+                "Applied UI/UX principles to create clean, responsive interfaces"
             ],
-            tech: ["Kotlin", "Dart", "Firebase", "TypeScript"],
+            tech: ["MERN Stack", "Kotlin", "PHP", "MySQL", "React", "Node.js"],
             icon: <Cpu className="text-cyan-500" />
         },
         {
-            title: "Frontend Engineer",
-            company: "Project Base",
-            period: "2021 - 2022",
-            type: "PROJECT BASED",
-            details: "Specializing in premium web aesthetics and performance. I turn complex designs into interactive, fast-loading websites with 3D animations.",
+            title: "IT Undergraduate & Student",
+            company: "SLIIT KANDY UNI",
+            period: "2023 - PRESENT (Reading)",
+            type: "ACADEMIC",
+            details: "Pursuing BSc (Hons) in Information Technology while completing hands-on projects and building comprehensive technical expertise.",
             achievements: [
-                "Created highly immersive 3D landing pages using Three.js.",
-                "Ensured 100/100 Lighthouse performance scores on key pages.",
-                "Developed a modular UI kit used across multiple company projects.",
-                "Implemented complex state management using Context API and Redux."
+                "Completed Higher National Diploma (HND) in Information Technology (2025)",
+                "Developed multiple team-based projects from planning to delivery phases",
+                "Contributed to group projects with focus on planning, development, and testing",
+                "Building expertise across frontend, backend, and mobile development domains"
             ],
-            tech: ["Framer Motion", "Tailwind CSS", "Next.js"],
-            icon: <Smartphone className="text-emerald-500" />
+            tech: ["Java", "Python", "C++", "Git", "Firebase", "MongoDB"],
+            icon: <Zap className="text-emerald-500" />
+        },
+        {
+            title: "Software Developer – Portfolio Projects",
+            company: "Personal & Group Projects",
+            period: "2021 - PRESENT",
+            type: "PROJECT BASED",
+            details: "Building diverse projects spanning web, mobile, and backend system development with focus on code quality and user experience.",
+            achievements: [
+                "Delivered 15+ projects across multiple technology stacks",
+                "Created enterprise-grade customer management and financial tracking systems",
+                "Built cross-platform mobile applications with intuitive interfaces",
+                "Implemented full CRUD operations and complex business logic"
+            ],
+            tech: ["Full-Stack", "Android", "Kotlin", "Express.js", "MongoDB", "MySQL"],
+            icon: <Code2 className="text-emerald-500" />
         }
     ];
 
@@ -811,7 +838,7 @@ const Experience = () => {
             <div className="max-w-7xl mx-auto border-t border-white/5 pt-32">
                 <div className="flex flex-col lg:flex-row gap-20">
                     <div className="lg:w-1/3">
-                        <h2 className="text-7xl font-black uppercase tracking-tight leading-none mb-10">My <br /><span className="text-emerald-500">Experience.</span></h2>
+                        <h2 className="text-7xl font-black uppercase tracking-tight leading-none mb-10 inline-block bg-emerald-600 px-8 py-6 rounded-2xl">My <br /><span className="text-white">Experience.</span></h2>
                         <MagneticButton
                             href="/resume.pdf"
                             className="inline-flex items-center gap-4 px-10 py-5 bg-emerald-600 rounded-full text-[10px] font-black uppercase tracking-widest shadow-2xl shadow-emerald-900/50"
@@ -895,7 +922,7 @@ const Contact = () => {
             <div className="max-w-7xl mx-auto relative z-10">
                 <div className="text-center mb-32">
                     <span className="text-emerald-500 text-[10px] font-black uppercase tracking-[1em] block mb-10 text-center mx-auto">Contact</span>
-                    <h2 className="text-7xl md:text-[150px] font-black tracking-tight leading-none uppercase italic border-text mx-auto">Let's Work<span className="text-white font-black not-italic">.</span></h2>
+                    <h2 className="text-7xl md:text-[150px] font-black tracking-tight leading-none uppercase italic mx-auto inline-block bg-emerald-600 px-12 py-8 md:px-20 md:py-12 rounded-2xl">Let's Work<span className="text-white font-black not-italic">.</span></h2>
                 </div>
 
                 <div className="grid lg:grid-cols-2 gap-10">
