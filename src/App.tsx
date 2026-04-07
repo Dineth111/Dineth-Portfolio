@@ -367,7 +367,7 @@ const About = () => {
                         <Briefcase className="w-12 h-12 text-emerald-500 mb-10 group-hover:scale-110 transition-transform" />
                         <h3 className="text-3xl font-black uppercase tracking-tight mb-4 italic">The Journey</h3>
                         <p className="text-slate-400 font-light leading-[1.8] [word-spacing:0.12em] tracking-wide max-w-xl">
-                            <span className="text-white font-medium">Dineth Sanjula</span> — I'm an IT undergraduate with deep expertise in full-stack development and project management. Currently working as a Project Manager at <span className="text-white font-medium">AASL IT Division</span>, where I lead cross-functional teams, coordinate complex projects, and deliver high-impact solutions. I combine technical proficiency with strong leadership skills, focusing on building scalable applications and well-organized systems that drive real business value.
+                            <span className="text-white font-medium">Dineth Sanjula</span> — I'm an IT undergraduate with deep expertise in full-stack development and project manager. Currently working as a Project Manager at <span className="text-white font-medium">AASL IT Division</span>, where I lead cross-functional teams, coordinate complex projects, and deliver high-impact solutions. I combine technical proficiency with strong leadership skills, focusing on building scalable applications and well-organized systems that drive real business value.
                         </p>
                     </motion.div>
 
