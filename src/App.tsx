@@ -837,7 +837,7 @@ const Experience = () => {
         <section id="experience" className="py-40 px-8 relative bg-background overflow-hidden">
             <div className="max-w-7xl mx-auto border-t border-white/5 pt-32">
                 <div className="flex flex-col lg:flex-row gap-20">
-                    <div className="lg:w-1/3">
+                    <div className="lg:w-2/5">
                         <h2 className="text-7xl font-black uppercase tracking-tight leading-none mb-10 inline-block bg-emerald-600 px-8 py-6 rounded-2xl">My <br /><span className="text-white">Experience.</span></h2>
                         <MagneticButton
                             href="/resume.pdf"
@@ -846,7 +846,7 @@ const Experience = () => {
                             Download Résumé <Download size={14} />
                         </MagneticButton>
                     </div>
-                    <div className="lg:w-2/3 space-y-4">
+                    <div className="lg:w-3/5 space-y-4">
                         {experiences.map((exp: any, idx) => (
                             <motion.div
                                 key={idx}
