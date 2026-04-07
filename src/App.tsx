@@ -772,7 +772,7 @@ const Projects = () => {
 const Experience = () => {
     const experiences = [
         {
-            title: "Project Management Intern",
+            title: "Project Manager",
             company: "Airport & Aviation Services (AASL) – IT Division",
             period: "2025 - PRESENT",
             type: "PROFESSIONAL",
