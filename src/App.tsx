@@ -902,18 +902,52 @@ const Experience = () => {
 };
 
 const Contact = () => {
-    const handleSubmit = (e: React.FormEvent) => {
+    const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
+    const submitLabel = status === 'sending' ? 'Sending...' : 'Send Message';
+
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        const formData = new FormData(e.target as HTMLFormElement);
-        const name = formData.get('name');
-        const email = formData.get('email');
-        const project = formData.get('project');
-        const message = formData.get('message');
+        const form = e.currentTarget;
+        const formData = new FormData(form);
+        const getField = (key: string) => {
+            const value = formData.get(key);
+            return typeof value === 'string' ? value : '';
+        };
 
-        const body = `Hello Dineth,%0D%0A%0D%0AYou have a new project inquiry from your portfolio.%0D%0A%0D%0A--- INQUIRY DETAILS ---%0D%0AClient Name: ${name}%0D%0AEmail: ${email}%0D%0AProject Type: ${project}%0D%0A%0D%0A--- MESSAGE ---%0D%0A${message}%0D%0A%0D%0ABest regards,%0D%0A${name}`;
+        const name = getField('name');
+        const email = getField('email');
+        const project = getField('project');
+        const message = getField('message');
 
-        const mailtoLink = `mailto:dinethsanjula647@gmail.com?subject=New Project Request: ${project} - From ${name}&body=${body}`;
-        window.location.href = mailtoLink;
+        setStatus('sending');
+
+        try {
+            const response = await fetch('https://formsubmit.co/ajax/dinethsanjula647@gmail.com', {
+                method: 'POST',
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    name,
+                    email,
+                    project,
+                    message,
+                    _subject: `New Project Request: ${project} - From ${name}`,
+                    _captcha: 'false',
+                    _template: 'table',
+                }),
+            });
+
+            if (!response.ok) {
+                throw new Error('Unable to send message');
+            }
+
+            setStatus('success');
+            form.reset();
+        } catch {
+            setStatus('error');
+        }
     };
 
     return (
@@ -933,15 +967,15 @@ const Contact = () => {
                             <p className="text-slate-400 font-light text-xl max-w-sm mb-12">I'm available for full-time roles, freelance projects, and tech consulting.</p>
 
                             <div className="space-y-8">
-                                <div className="flex items-center gap-6 text-white group/link cursor-pointer" onClick={() => window.location.href = "mailto:dinethsanjula647@gmail.com"}>
+                                <button type="button" className="flex items-center gap-6 text-white group/link cursor-pointer text-left w-full" onClick={() => navigator.clipboard.writeText("dinethsanjula647@gmail.com")}>
                                     <div className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center group-hover/link:bg-emerald-600 transition-colors">
                                         <Mail size={24} />
                                     </div>
                                     <div>
-                                        <p className="text-[10px] uppercase font-bold text-slate-500 tracking-widest">Email Me</p>
+                                        <p className="text-[10px] uppercase font-bold text-slate-500 tracking-widest">Email Me - Click to Copy</p>
                                         <span className="text-sm font-bold tracking-widest uppercase [word-spacing:0.2em]">dinethsanjula647@gmail.com</span>
                                     </div>
-                                </div>
+                                </button>
 
                                 <div className="flex items-center gap-6 text-white group/link cursor-pointer" onClick={() => window.open("https://wa.me/94711424377", "_blank")}>
                                     <div className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center group-hover/link:bg-emerald-600 transition-colors">
@@ -1033,9 +1067,11 @@ const Contact = () => {
                         </div>
                         <button type="submit" className="w-full">
                             <MagneticButton className="w-full py-6 bg-emerald-600 rounded-3xl text-[11px] font-black uppercase tracking-[0.4em] flex items-center justify-center gap-4 hover:shadow-[0_0_40px_rgba(16,185,129,0.3)] group transition-all">
-                                Send Message <Send size={16} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                                {submitLabel} <Send size={16} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                             </MagneticButton>
                         </button>
+                        {status === 'success' && <p className="text-emerald-500 text-xs font-bold uppercase tracking-[0.3em] text-center">Message sent successfully.</p>}
+                        {status === 'error' && <p className="text-red-400 text-xs font-bold uppercase tracking-[0.3em] text-center">Message could not be sent. Please try again.</p>}
                     </form>
                 </div>
             </div>
