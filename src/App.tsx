@@ -774,7 +774,7 @@ const Experience = () => {
         {
             title: "Project Manager",
             company: "Airport & Aviation Services (AASL) – IT Division",
-            period: "2025 - 2029",
+            period: "2025 - 2026",
             type: "PROFESSIONAL",
             details: "Managing and coordinating IT projects across multiple stakeholders while tracking progress, documenting requirements, and supporting delivery planning.",
             achievements: [
