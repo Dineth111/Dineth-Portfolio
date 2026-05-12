@@ -789,7 +789,7 @@ const Experience = () => {
         {
             title: "Intern Web & Mobile Developer",
             company: "Freelance / Academic Projects",
-            period: "2023 - PRESENT",
+            period: "2025 - 2026",
             type: "ACADEMIC & FREELANCE",
             details: "Developing full-stack web applications and mobile apps while applying UI/UX principles to create clean, responsive interfaces.",
             achievements: [
