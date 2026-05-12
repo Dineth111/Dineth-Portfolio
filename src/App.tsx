@@ -774,14 +774,14 @@ const Experience = () => {
         {
             title: "Project Manager",
             company: "Airport & Aviation Services (AASL) – IT Division",
-            period: "2025 - PRESENT",
+            period: "2025 - 2029",
             type: "PROFESSIONAL",
-            details: "Assisting in planning and coordinating IT projects across multiple stakeholders while tracking progress and supporting requirement gathering.",
+            details: "Managing and coordinating IT projects across multiple stakeholders while tracking progress, documenting requirements, and supporting delivery planning.",
             achievements: [
-                "Assist in planning and coordinating IT projects across multiple stakeholders",
+                "Manage planning and coordination of IT projects across multiple stakeholders",
                 "Track project progress, timelines, and deliverables using structured documentation",
-                "Support requirement gathering and translate business needs into technical tasks",
-                "Collaborate with developers, technical teams, and supervisors to ensure smooth execution"
+                "Support requirement gathering and translate business needs into delivery tasks",
+                "Coordinate with technical teams and supervisors to ensure smooth execution"
             ],
             tech: ["Project Management", "Documentation", "Stakeholder Coordination", "Team Collaboration"],
             icon: <Briefcase className="text-emerald-500" />
@@ -789,9 +789,9 @@ const Experience = () => {
         {
             title: "Intern Web & Mobile Developer",
             company: "Freelance / Academic Projects",
-            period: "2025 - 2026",
-            type: "ACADEMIC & FREELANCE",
-            details: "Developing full-stack web applications and mobile apps while applying UI/UX principles to create clean, responsive interfaces.",
+            period: "2023 - PRESENT",
+            type: "COMPLETED",
+            details: "Developed full-stack web applications and mobile apps while applying UI/UX principles to create clean, responsive interfaces.",
             achievements: [
                 "Developed full-stack web applications using the MERN stack",
                 "Built Android applications using Kotlin and XML in Android Studio",
@@ -817,7 +817,7 @@ const Experience = () => {
             icon: <Zap className="text-emerald-500" />
         },
         {
-            title: "Software Developer – Portfolio Projects",
+            title: "Software Developer & Project Builder",
             company: "Personal & Group Projects",
             period: "2021 - PRESENT",
             type: "PROJECT BASED",
