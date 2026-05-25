@@ -190,7 +190,7 @@ const Navbar = () => {
 
     return (
         <nav className={`fixed w-full z-[100] transition-all duration-700 ${isScrolled ? 'py-4 bg-[#020617]/80 backdrop-blur-2xl border-b border-white/5' : 'py-8 bg-transparent'}`}>
-            <div className="max-w-7xl mx-auto px-8 flex justify-between items-center whitespace-nowrap">
+            <div className="max-w-7xl mx-auto px-4 sm:px-8 flex justify-between items-center whitespace-nowrap">
                 <motion.div
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
@@ -241,7 +241,7 @@ const Navbar = () => {
                                 key={link.name}
                                 href={link.href}
                                 onClick={() => setIsMobileMenuOpen(false)}
-                                className="text-5xl font-black uppercase tracking-tight hover:text-emerald-500 transition-colors"
+                                className="text-3xl font-black uppercase tracking-tight hover:text-emerald-500 transition-colors"
                             >
                                 {link.name}
                             </a>
@@ -259,20 +259,20 @@ const Hero = () => {
     const opacity = useTransform(scrollY, [0, 400], [1, 0]);
 
     return (
-        <section id="home" className="min-h-screen relative flex items-center px-8 overflow-hidden bg-[#030014] pt-20">
+        <section id="home" className="min-h-screen relative flex items-center px-4 sm:px-8 overflow-hidden bg-[#030014] pt-24 sm:pt-20">
             {/* Ambient Blobs */}
             <motion.div
                 animate={{ scale: [1, 1.2, 1], x: [0, 100, 0], y: [0, -50, 0] }}
                 transition={{ duration: 20, repeat: Infinity }}
-                className="absolute top-1/4 -left-1/4 w-[800px] h-[800px] bg-violet-900/10 blur-[180px] rounded-full"
+                className="absolute top-1/4 -left-1/4 w-[520px] sm:w-[800px] h-[520px] sm:h-[800px] bg-violet-900/10 blur-[180px] rounded-full"
             />
             <motion.div
                 animate={{ scale: [1, 1.3, 1], x: [0, -50, 0], y: [0, 100, 0] }}
                 transition={{ duration: 25, repeat: Infinity }}
-                className="absolute -bottom-1/4 -right-1/4 w-[600px] h-[600px] bg-emerald-900/10 blur-[150px] rounded-full"
+                className="absolute -bottom-1/4 -right-1/4 w-[420px] sm:w-[600px] h-[420px] sm:h-[600px] bg-emerald-900/10 blur-[150px] rounded-full"
             />
 
-            <div className="max-w-7xl mx-auto w-full grid lg:grid-cols-2 gap-20 items-center relative z-10">
+            <div className="max-w-7xl mx-auto w-full grid lg:grid-cols-2 gap-12 lg:gap-20 items-center relative z-10">
                 <motion.div style={{ y, opacity }}>
                     <motion.div
                         initial={{ opacity: 0, x: -20 }}
@@ -283,20 +283,20 @@ const Hero = () => {
                         <span className="text-[10px] font-black uppercase tracking-[0.4em] text-slate-400">Web & Mobile Developer</span>
                     </motion.div>
 
-                    <h1 className="text-7xl md:text-[100px] font-black tracking-tight leading-[0.9] mb-12 uppercase italic">
+                    <h1 className="text-5xl sm:text-6xl md:text-[100px] font-black tracking-tight leading-[0.92] mb-8 sm:mb-12 uppercase italic">
                         Dineth <br />
                         <span className="text-emerald-500">Sanjula<span className="text-white">.</span></span>
                     </h1>
 
-                    <p className="text-xl md:text-2xl text-slate-400 font-light max-w-xl mb-16 leading-relaxed">
+                    <p className="text-base sm:text-xl md:text-2xl text-slate-400 font-light max-w-xl mb-10 sm:mb-16 leading-relaxed">
                         I build <span className="text-white font-medium">high-quality apps</span> with clean code and <span className="text-emerald-400">modern designs.</span>
                     </p>
 
-                    <div className="flex flex-wrap gap-10 items-center">
-                        <MagneticButton href="#projects" className="px-12 py-6 bg-white text-black text-[11px] font-black uppercase tracking-[0.4em] rounded-full hover:scale-105 transition-transform flex items-center gap-3">
+                    <div className="flex flex-col sm:flex-row flex-wrap gap-4 sm:gap-10 items-start sm:items-center">
+                        <MagneticButton href="#projects" className="px-8 sm:px-12 py-4 sm:py-6 bg-white text-black text-[10px] sm:text-[11px] font-black uppercase tracking-[0.3em] sm:tracking-[0.4em] rounded-full hover:scale-105 transition-transform flex items-center gap-3">
                             View My Work <Zap size={16} fill="currentColor" />
                         </MagneticButton>
-                        <a href="#contact" className="text-[10px] font-black uppercase tracking-[0.4em] text-white hover:text-emerald-500 flex items-center gap-2 group transition-colors">
+                        <a href="#contact" className="text-[9px] sm:text-[10px] font-black uppercase tracking-[0.3em] sm:tracking-[0.4em] text-white hover:text-emerald-500 flex items-center gap-2 group transition-colors">
                             Contact Me <ChevronRight className="group-hover:translate-x-1 transition-transform" />
                         </a>
                     </div>
@@ -350,94 +350,94 @@ const Hero = () => {
 
 const About = () => {
     return (
-        <section id="about" className="py-40 px-8 relative overflow-hidden bg-background">
+        <section id="about" className="py-24 sm:py-40 px-4 sm:px-8 relative overflow-hidden bg-background">
             <div className="max-w-7xl mx-auto">
                 <div className="mb-24">
                     <span className="text-emerald-500 text-[10px] font-black uppercase tracking-[0.8em] block mb-6">About Me</span>
-                    <h2 className="text-6xl md:text-[100px] font-black tracking-tight leading-none uppercase inline-block bg-emerald-600 px-8 py-6 md:px-12 md:py-8 rounded-2xl">
+                    <h2 className="text-4xl sm:text-6xl md:text-[100px] font-black tracking-tight leading-none uppercase inline-block bg-emerald-600 px-5 py-4 sm:px-8 sm:py-6 md:px-12 md:py-8 rounded-2xl">
                         My <span className="text-white italic">Core</span> <br />Skills<span className="text-white">.</span>
                     </h2>
                 </div>
 
-                <div className="grid lg:grid-cols-3 gap-6 auto-rows-[300px]">
+                <div className="grid lg:grid-cols-3 gap-6 auto-rows-auto lg:auto-rows-[300px]">
                     <motion.div
                         whileHover={{ y: -5 }}
-                        className="lg:col-span-2 glass-card p-12 rounded-[50px] flex flex-col justify-end group border-emerald-500/10"
+                        className="lg:col-span-2 glass-card p-8 sm:p-12 rounded-[32px] sm:rounded-[50px] flex flex-col justify-end group border-emerald-500/10 min-h-[260px]"
                     >
                         <Briefcase className="w-12 h-12 text-emerald-500 mb-10 group-hover:scale-110 transition-transform" />
-                        <h3 className="text-3xl font-black uppercase tracking-tight mb-4 italic">The Journey</h3>
-                        <p className="text-slate-400 font-light leading-[1.8] [word-spacing:0.12em] tracking-wide max-w-xl">
+                        <h3 className="text-2xl sm:text-3xl font-black uppercase tracking-tight mb-4 italic">The Journey</h3>
+                        <p className="text-sm sm:text-base text-slate-400 font-light leading-[1.8] [word-spacing:0.12em] tracking-wide max-w-xl">
                             <span className="text-white font-medium">Dineth Sanjula</span> — I'm an IT undergraduate with deep expertise in full-stack development and project manager. Currently working as a Project Manager at <span className="text-white font-medium">AASL IT Division</span>, where I lead cross-functional teams, coordinate complex projects, and deliver high-impact solutions. I combine technical proficiency with strong leadership skills, focusing on building scalable applications and well-organized systems that drive real business value.
                         </p>
                     </motion.div>
 
                     <motion.div
                         whileHover={{ y: -5 }}
-                        className="bg-emerald-600 p-12 rounded-[50px] flex flex-col items-center justify-center text-center text-white relative overflow-hidden group shadow-2xl shadow-emerald-900/20"
+                        className="bg-emerald-600 p-8 sm:p-12 rounded-[32px] sm:rounded-[50px] flex flex-col items-center justify-center text-center text-white relative overflow-hidden group shadow-2xl shadow-emerald-900/20 min-h-[260px]"
                     >
                         <div className="absolute inset-0 bg-noise opacity-20" />
                         <Terminal className="w-20 h-20 mb-8 opacity-20 absolute -top-4 -right-4 group-hover:rotate-12 transition-transform" />
-                        <h3 className="text-4xl font-black uppercase tracking-tight leading-none mb-4 italic">MERN <br />Expert</h3>
+                        <h3 className="text-3xl sm:text-4xl font-black uppercase tracking-tight leading-none mb-4 italic">MERN <br />Expert</h3>
                         <span className="text-[10px] font-black uppercase tracking-[0.3em] [word-spacing:0.5em] opacity-60">Full-Stack Capability</span>
                     </motion.div>
 
                     <motion.div
                         whileHover={{ y: -5 }}
-                        className="glass-card p-12 rounded-[50px] flex flex-col justify-center border-emerald-500/10 overflow-hidden relative"
+                        className="glass-card p-8 sm:p-12 rounded-[32px] sm:rounded-[50px] flex flex-col justify-center border-emerald-500/10 overflow-hidden relative min-h-[220px]"
                     >
                         <Smartphone className="w-10 h-10 text-emerald-500 mb-6" />
-                        <h4 className="text-xl font-bold uppercase tracking-tight mb-2">Mobile Apps</h4>
+                        <h4 className="text-lg sm:text-xl font-bold uppercase tracking-tight mb-2">Mobile Apps</h4>
                         <p className="text-sm text-slate-500 leading-relaxed font-light">Cross-platform development using Kotlin & Dart for high-performance applications.</p>
                     </motion.div>
 
                     <motion.div
                         whileHover={{ y: -5 }}
-                        className="lg:col-span-2 glass-card p-12 rounded-[50px] border-white/5 bg-gradient-to-br from-emerald-500/5 to-transparent flex flex-col justify-center gap-10"
+                        className="lg:col-span-2 glass-card p-8 sm:p-12 rounded-[32px] sm:rounded-[50px] border-white/5 bg-gradient-to-br from-emerald-500/5 to-transparent flex flex-col justify-center gap-8 sm:gap-10"
                     >
-                        <div className="flex gap-12">
+                        <div className="flex flex-col sm:flex-row gap-6 sm:gap-12">
                             <div>
                                 <h4 className="text-emerald-400 text-5xl font-black italic mb-2">24/7</h4>
                                 <p className="text-[9px] uppercase font-bold tracking-widest text-slate-500">Service Availability</p>
                             </div>
-                            <div className="w-px h-16 bg-white/10 shrink-0" />
+                            <div className="hidden sm:block w-px h-16 bg-white/10 shrink-0" />
                             <div>
                                 <h4 className="text-cyan-400 text-5xl font-black italic mb-2">100%</h4>
                                 <p className="text-[9px] uppercase font-bold tracking-widest text-slate-500">Project Commitment</p>
                             </div>
                         </div>
-                        <p className="text-slate-400 font-light italic">"Code is the tool I use to solve problems, but design is the language I use to communicate solutions."</p>
+                        <p className="text-sm sm:text-base text-slate-400 font-light italic">"Code is the tool I use to solve problems, but design is the language I use to communicate solutions."</p>
                     </motion.div>
 
                     <motion.div
                         whileHover={{ y: -5 }}
-                        className="glass-card p-12 rounded-[50px] flex flex-col justify-center border-emerald-500/10"
+                        className="glass-card p-8 sm:p-12 rounded-[32px] sm:rounded-[50px] flex flex-col justify-center border-emerald-500/10 min-h-[220px]"
                     >
                         <Layout className="w-10 h-10 text-emerald-500 mb-6" />
-                        <h4 className="text-xl font-bold uppercase tracking-tight mb-2">My Vision</h4>
+                        <h4 className="text-lg sm:text-xl font-bold uppercase tracking-tight mb-2">My Vision</h4>
                         <p className="text-sm text-slate-500 leading-relaxed font-light">To become a world-class Full Stack Architect, contributing to innovative open-source projects and enterprise-level applications.</p>
                     </motion.div>
 
                     <motion.div
                         whileHover={{ y: -5 }}
-                        className="glass-card p-12 rounded-[50px] flex flex-col justify-center border-emerald-500/10"
+                        className="glass-card p-8 sm:p-12 rounded-[32px] sm:rounded-[50px] flex flex-col justify-center border-emerald-500/10 min-h-[220px]"
                     >
                         <Code2 className="w-10 h-10 text-emerald-500 mb-6" />
-                        <h4 className="text-xl font-bold uppercase tracking-tight mb-2">Core Values</h4>
+                        <h4 className="text-lg sm:text-xl font-bold uppercase tracking-tight mb-2">Core Values</h4>
                         <p className="text-sm text-slate-500 leading-relaxed font-light">Clean code Architecture, scalability-first mindset, and obsessive attention to pixel-perfect design elements.</p>
                     </motion.div>
 
                     <motion.div
                         whileHover={{ y: -5 }}
-                        className="lg:col-span-1 glass-card p-12 rounded-[50px] flex flex-col justify-center border-emerald-500/10 bg-white/5"
+                        className="lg:col-span-1 glass-card p-8 sm:p-12 rounded-[32px] sm:rounded-[50px] flex flex-col justify-center border-emerald-500/10 bg-white/5 min-h-[220px]"
                     >
                         <Zap className="w-10 h-10 text-emerald-500 mb-6" />
-                        <h4 className="text-xl font-bold uppercase tracking-tight mb-2">Ongoing Research</h4>
+                        <h4 className="text-lg sm:text-xl font-bold uppercase tracking-tight mb-2">Ongoing Research</h4>
                         <p className="text-sm text-slate-500 leading-relaxed font-light">Currently exploring Emerging Technologies and AI-driven development workflows to stay ahead in the digital landscape.</p>
                     </motion.div>
 
                     <motion.div
                         whileHover={{ y: -5 }}
-                        className="lg:col-span-2 glass-card p-12 rounded-[50px] flex flex-col justify-center border-emerald-500/10"
+                        className="lg:col-span-2 glass-card p-8 sm:p-12 rounded-[32px] sm:rounded-[50px] flex flex-col justify-center border-emerald-500/10 min-h-[220px]"
                     >
                         <div className="flex items-center gap-6 mb-4">
                             <div className="w-12 h-12 bg-emerald-500/10 rounded-xl flex items-center justify-center">
@@ -445,7 +445,7 @@ const About = () => {
                             </div>
                             <h4 className="text-xl font-bold uppercase tracking-tight">Global Outreach</h4>
                         </div>
-                        <p className="text-slate-400 font-light leading-relaxed">Collaborating with international teams and clients to deliver digital solutions that transcend borders. Focused on cross-cultural design systems and inclusive accessibility standards.</p>
+                        <p className="text-sm sm:text-base text-slate-400 font-light leading-relaxed">Collaborating with international teams and clients to deliver digital solutions that transcend borders. Focused on cross-cultural design systems and inclusive accessibility standards.</p>
                     </motion.div>
                 </div>
             </div>
@@ -533,17 +533,17 @@ const Skills = () => {
     const [isPaused, setIsPaused] = useState(false);
 
     return (
-        <section id="skills" className="py-60 px-8 relative overflow-hidden bg-background perspective-2000">
+        <section id="skills" className="py-24 sm:py-60 px-4 sm:px-8 relative overflow-hidden bg-background perspective-2000">
             <div className="max-w-7xl mx-auto flex flex-col items-center">
                 <div className="text-center mb-44 relative z-10">
                     <span className="text-emerald-500 text-[10px] font-black uppercase tracking-[1em] block mb-6">My Skills</span>
-                    <h2 className="text-6xl md:text-[100px] font-black tracking-tight leading-none uppercase text-white inline-block bg-emerald-600 px-8 py-6 md:px-12 md:py-8 rounded-2xl mx-auto">
+                    <h2 className="text-4xl sm:text-6xl md:text-[100px] font-black tracking-tight leading-none uppercase text-white inline-block bg-emerald-600 px-5 py-4 sm:px-8 sm:py-6 md:px-12 md:py-8 rounded-2xl mx-auto">
                         My Technical <br /><span className="text-white italic">Skills.</span>
                     </h2>
                 </div>
 
                 <div
-                    className="relative w-full max-w-[600px] aspect-square flex items-center justify-center transform-gpu"
+                    className="relative w-full max-w-[600px] aspect-[4/5] sm:aspect-square flex items-center justify-center transform-gpu"
                 >
                     {/* Dynamic Central Hub */}
                     <AnimatePresence mode="wait">
@@ -552,7 +552,7 @@ const Skills = () => {
                             initial={{ opacity: 0, scale: 0.8, rotateY: -90 }}
                             animate={{ opacity: 1, scale: 1, rotateY: 0 }}
                             exit={{ opacity: 0, scale: 0.8, rotateY: 90 }}
-                            className="w-48 h-48 md:w-64 md:h-64 rounded-full glass-card border-2 border-emerald-500/30 flex flex-col items-center justify-center z-20 shadow-[0_0_80px_rgba(16,185,129,0.2)] p-8 text-center"
+                            className="w-40 h-40 sm:w-48 sm:h-48 md:w-64 md:h-64 rounded-full glass-card border-2 border-emerald-500/30 flex flex-col items-center justify-center z-20 shadow-[0_0_80px_rgba(16,185,129,0.2)] p-5 sm:p-8 text-center"
                         >
                             <motion.div
                                 animate={{ y: [0, -5, 0] }}
@@ -561,14 +561,14 @@ const Skills = () => {
                             >
                                 {React.cloneElement(activeSkill.icon as React.ReactElement, { size: 40 })}
                             </motion.div>
-                            <h3 className="text-white font-black text-2xl mt-4 uppercase tracking-tight italic">{activeSkill.name}</h3>
+                            <h3 className="text-white font-black text-xl sm:text-2xl mt-4 uppercase tracking-tight italic">{activeSkill.name}</h3>
                             <span className="bg-emerald-500/10 text-emerald-400 text-[9px] font-bold px-3 py-1 rounded-full uppercase tracking-widest mt-2">{activeSkill.level}</span>
-                            <p className="text-slate-500 text-[10px] leading-relaxed mt-4 font-light max-w-[80%] mx-auto">{activeSkill.details}</p>
+                            <p className="text-slate-500 text-[10px] leading-relaxed mt-3 sm:mt-4 font-light max-w-[80%] mx-auto">{activeSkill.details}</p>
                         </motion.div>
                     </AnimatePresence>
 
                     {/* Background Core Glow */}
-                    <div className="w-80 h-80 bg-emerald-600/10 rounded-full blur-[100px] absolute z-0 animate-pulse" />
+                    <div className="w-64 h-64 sm:w-80 sm:h-80 bg-emerald-600/10 rounded-full blur-[100px] absolute z-0 animate-pulse" />
 
                     {/* Rotating Intelligence Ring */}
                     <motion.div
@@ -580,7 +580,7 @@ const Skills = () => {
                         {skills.map((skill, idx) => (
                             <div
                                 key={idx}
-                                className="absolute w-24 h-24 md:w-28 md:h-28"
+                                className="hidden sm:block absolute w-24 h-24 md:w-28 md:h-28"
                                 style={{
                                     transform: `rotate(${skill.degree}deg) translateY(-300px) rotate(-${skill.degree}deg)`,
                                 }}
@@ -606,8 +606,8 @@ const Skills = () => {
                     </motion.div>
 
                     {/* Orbital Paths */}
-                    <div className="absolute w-[600px] h-[600px] border border-white/5 rounded-full z-0 pointer-events-none" />
-                    <div className="absolute w-[450px] h-[450px] border border-emerald-500/5 rounded-full z-0 pointer-events-none" />
+                    <div className="hidden sm:block absolute w-[600px] h-[600px] border border-white/5 rounded-full z-0 pointer-events-none" />
+                    <div className="hidden sm:block absolute w-[450px] h-[450px] border border-emerald-500/5 rounded-full z-0 pointer-events-none" />
                 </div>
             </div>
         </section>
@@ -631,7 +631,7 @@ const ProjectCard = ({ project, index }: { project: Project, index: number }) =>
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ delay: index * 0.1 }}
-            className="project-card group relative h-[500px] rounded-[50px] overflow-hidden border border-white/5 bg-[#05001a] perspective-2000"
+            className="project-card group relative h-[380px] sm:h-[500px] rounded-[28px] sm:rounded-[50px] overflow-hidden border border-white/5 bg-[#05001a] perspective-2000"
         >
             <div className="absolute inset-0 z-10 bg-gradient-to-t from-[#030014] via-[#030014]/35 to-transparent opacity-90" />
             <img
@@ -643,16 +643,16 @@ const ProjectCard = ({ project, index }: { project: Project, index: number }) =>
                 className="absolute inset-0 w-full h-full object-cover transition-all duration-1000 group-hover:scale-110 group-hover:blur-sm opacity-75"
             />
 
-            <div className="absolute inset-0 z-20 p-12 flex flex-col justify-end transform-gpu transition-transform duration-700">
+            <div className="absolute inset-0 z-20 p-6 sm:p-12 flex flex-col justify-end transform-gpu transition-transform duration-700">
                 <div className="mb-6 flex items-center justify-between overflow-hidden">
                     <span className="text-[10px] uppercase font-black tracking-[0.4em] text-emerald-500">{project.category}</span>
                     <div className="h-px bg-white/10 flex-grow mx-6" />
                 </div>
 
-                <h3 className="text-4xl font-black text-white mb-6 uppercase tracking-tight italic">{project.title}</h3>
-                <p className="text-slate-400 font-light text-sm mb-10 leading-[1.8] [word-spacing:0.12em] tracking-wide max-w-sm">{project.description}</p>
+                <h3 className="text-2xl sm:text-4xl font-black text-white mb-4 sm:mb-6 uppercase tracking-tight italic">{project.title}</h3>
+                <p className="text-xs sm:text-sm text-slate-400 font-light mb-6 sm:mb-10 leading-[1.7] sm:leading-[1.8] [word-spacing:0.12em] tracking-wide max-w-sm">{project.description}</p>
 
-                <div className="flex flex-wrap gap-2 mb-10">
+                <div className="flex flex-wrap gap-2 mb-6 sm:mb-10">
                     {project.tags.map(tag => (
                         <span key={tag} className="px-4 py-2 rounded-xl bg-white/5 text-[8px] font-black uppercase text-slate-500 tracking-widest border border-white/5">
                             {tag}
@@ -661,10 +661,10 @@ const ProjectCard = ({ project, index }: { project: Project, index: number }) =>
                 </div>
 
                 <div className="flex justify-between items-center group/btn">
-                    <a href={project.link} target="_blank" className="flex items-center gap-3 text-[10px] font-black uppercase tracking-widest text-white hover:text-emerald-400 transition-colors">
+                    <a href={project.link} target="_blank" className="flex items-center gap-3 text-[9px] sm:text-[10px] font-black uppercase tracking-widest text-white hover:text-emerald-400 transition-colors">
                         Inspect Source <Github size={16} />
                     </a>
-                    <div className="w-14 h-14 rounded-2xl glass-card flex items-center justify-center group-hover:bg-emerald-600 transition-all duration-500 group-hover:rotate-45">
+                    <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl glass-card flex items-center justify-center group-hover:bg-emerald-600 transition-all duration-500 group-hover:rotate-45">
                         <ArrowUpRight strokeWidth={3} className="text-white" />
                     </div>
                 </div>
@@ -759,11 +759,11 @@ const Projects = () => {
     ];
 
     return (
-        <section id="projects" className="py-40 px-8 bg-background relative">
+        <section id="projects" className="py-24 sm:py-40 px-4 sm:px-8 bg-background relative">
             <div className="max-w-7xl mx-auto">
                 <div className="mb-32">
                     <span className="text-emerald-500 text-xs font-black uppercase tracking-[0.5em] block mb-6">My Work</span>
-                    <h2 className="text-6xl md:text-[120px] font-black tracking-tight leading-none uppercase inline-block bg-emerald-600 px-8 py-6 md:px-12 md:py-8 rounded-2xl">
+                    <h2 className="text-4xl sm:text-6xl md:text-[120px] font-black tracking-tight leading-none uppercase inline-block bg-emerald-600 px-5 py-4 sm:px-8 sm:py-6 md:px-12 md:py-8 rounded-2xl">
                         Selected <br /><span className="text-white">Projects.</span>
                     </h2>
                 </div>
@@ -772,7 +772,7 @@ const Projects = () => {
                     <MagneticButton className="px-10 py-4 bg-white/5 border border-white/10 rounded-full text-[9px] font-black uppercase tracking-widest [word-spacing:0.2em] hover:bg-white/10">Browse GitHub Archive</MagneticButton>
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-8">
+                <div className="grid md:grid-cols-2 gap-5 sm:gap-8">
                     {projects.map((project, idx) => (
                         <ProjectCard key={project.title} project={project} index={idx} />
                     ))}
@@ -847,11 +847,11 @@ const Experience = () => {
     ];
 
     return (
-        <section id="experience" className="py-40 px-8 relative bg-background overflow-hidden">
+        <section id="experience" className="py-24 sm:py-40 px-4 sm:px-8 relative bg-background overflow-hidden">
             <div className="max-w-7xl mx-auto border-t border-white/5 pt-32">
                 <div className="flex flex-col lg:flex-row gap-20">
                     <div className="lg:w-2/5">
-                        <h2 className="text-7xl font-black uppercase tracking-tight leading-none mb-10 inline-block bg-emerald-600 px-8 py-6 rounded-2xl">My <br /><span className="text-white">Experience.</span></h2>
+                        <h2 className="text-4xl sm:text-7xl font-black uppercase tracking-tight leading-none mb-10 inline-block bg-emerald-600 px-5 py-4 sm:px-8 sm:py-6 rounded-2xl">My <br /><span className="text-white">Experience.</span></h2>
                         <MagneticButton
                             href="/resume.pdf"
                             className="inline-flex items-center gap-4 px-10 py-5 bg-emerald-600 rounded-full text-[10px] font-black uppercase tracking-widest shadow-2xl shadow-emerald-900/50"
@@ -867,16 +867,16 @@ const Experience = () => {
                                 whileInView={{ opacity: 1, x: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: idx * 0.1 }}
-                                className="group p-10 glass-card rounded-[40px] flex flex-col md:flex-row md:items-start justify-between hover:bg-white/5 transition-all gap-8"
+                                className="group p-6 sm:p-10 glass-card rounded-[28px] sm:rounded-[40px] flex flex-col md:flex-row md:items-start justify-between hover:bg-white/5 transition-all gap-6 sm:gap-8"
                             >
                                 <div className="flex flex-col md:flex-row gap-8">
-                                    <div className="w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center group-hover:bg-emerald-500 transition-colors shrink-0">
+                                    <div className="w-14 h-14 sm:w-16 sm:h-16 bg-white/5 rounded-2xl flex items-center justify-center group-hover:bg-emerald-500 transition-colors shrink-0">
                                         {exp.icon}
                                     </div>
                                     <div className="flex-1">
                                         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4">
                                             <div>
-                                                <h3 className="text-3xl font-black uppercase tracking-tight italic">{exp.title}</h3>
+                                                <h3 className="text-2xl sm:text-3xl font-black uppercase tracking-tight italic">{exp.title}</h3>
                                                 <p className="text-[10px] uppercase font-bold text-slate-500 tracking-widest">{exp.company}</p>
                                             </div>
                                             <div className="text-right">
@@ -964,29 +964,29 @@ const Contact = () => {
     };
 
     return (
-        <section id="contact" className="py-40 px-8 bg-background relative overflow-hidden">
+        <section id="contact" className="py-24 sm:py-40 px-4 sm:px-8 bg-background relative overflow-hidden">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,rgba(16,185,129,0.05),transparent_40%)]" />
             <div className="max-w-7xl mx-auto relative z-10">
                 <div className="text-center mb-32">
                     <span className="text-emerald-500 text-[10px] font-black uppercase tracking-[1em] block mb-10 text-center mx-auto">Contact</span>
-                    <h2 className="text-7xl md:text-[150px] font-black tracking-tight leading-none uppercase italic mx-auto inline-block bg-emerald-600 px-12 py-8 md:px-20 md:py-12 rounded-2xl">Let's Work<span className="text-white font-black not-italic">.</span></h2>
+                    <h2 className="text-4xl sm:text-7xl md:text-[150px] font-black tracking-tight leading-none uppercase italic mx-auto inline-block bg-emerald-600 px-5 py-4 sm:px-12 sm:py-8 md:px-20 md:py-12 rounded-2xl">Let's Work<span className="text-white font-black not-italic">.</span></h2>
                 </div>
 
-                <div className="grid lg:grid-cols-2 gap-10">
-                    <div className="glass-card p-16 rounded-[60px] flex flex-col justify-between group overflow-hidden relative border-emerald-500/10">
+                <div className="grid lg:grid-cols-2 gap-8 sm:gap-10">
+                    <div className="glass-card p-8 sm:p-16 rounded-[32px] sm:rounded-[60px] flex flex-col justify-between group overflow-hidden relative border-emerald-500/10">
                         <div className="absolute top-[-20%] right-[-10%] w-[300px] h-[300px] bg-emerald-600/10 blur-[100px] rounded-full" />
                         <div>
                             <h3 className="text-4xl font-black uppercase tracking-tight mb-4 italic">Contact Info</h3>
-                            <p className="text-slate-400 font-light text-xl max-w-sm mb-12">I'm available for full-time roles, freelance projects, and tech consulting.</p>
+                            <p className="text-sm sm:text-xl text-slate-400 font-light max-w-sm mb-10 sm:mb-12">I'm available for full-time roles, freelance projects, and tech consulting.</p>
 
                             <div className="space-y-8">
                                 <button type="button" className="flex items-center gap-6 text-white group/link cursor-pointer text-left w-full" onClick={() => navigator.clipboard.writeText("dinethsanjula647@gmail.com")}>
                                     <div className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center group-hover/link:bg-emerald-600 transition-colors">
                                         <Mail size={24} />
                                     </div>
-                                    <div>
+                                    <div className="min-w-0">
                                         <p className="text-[10px] uppercase font-bold text-slate-500 tracking-widest">Email Me - Click to Copy</p>
-                                        <span className="text-sm font-bold tracking-widest uppercase [word-spacing:0.2em]">dinethsanjula647@gmail.com</span>
+                                        <span className="text-xs sm:text-sm font-bold tracking-widest uppercase [word-spacing:0.2em] break-all">dinethsanjula647@gmail.com</span>
                                     </div>
                                 </button>
 
@@ -994,7 +994,7 @@ const Contact = () => {
                                     <div className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center group-hover/link:bg-emerald-600 transition-colors">
                                         <MessageSquare size={24} />
                                     </div>
-                                    <div>
+                                    <div className="min-w-0">
                                         <p className="text-[10px] uppercase font-bold text-slate-500 tracking-widest">WhatsApp</p>
                                         <span className="text-sm font-bold tracking-widest uppercase [word-spacing:0.2em]">0711424377</span>
                                     </div>
@@ -1004,7 +1004,7 @@ const Contact = () => {
                                     <div className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center">
                                         <Layout size={24} className="text-emerald-500" />
                                     </div>
-                                    <div>
+                                    <div className="min-w-0">
                                         <p className="text-[10px] uppercase font-bold text-slate-500 tracking-widest">Location</p>
                                         <span className="text-sm font-bold tracking-widest uppercase [word-spacing:0.2em]">Kuliyaptitiya</span>
                                     </div>
@@ -1012,7 +1012,7 @@ const Contact = () => {
 
                                 <div className="pt-8 border-t border-white/5">
                                     <p className="text-[10px] uppercase font-bold text-slate-500 tracking-widest mb-4">Availability</p>
-                                    <div className="grid grid-cols-2 gap-4">
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                         <div>
                                             <p className="text-[9px] text-slate-400 uppercase font-black mb-1">Mon - Fri</p>
                                             <p className="text-xs font-bold text-white uppercase tracking-tight italic">09:00 AM - 06:00 PM</p>
@@ -1034,10 +1034,10 @@ const Contact = () => {
                         </div>
                     </div>
 
-                    <form onSubmit={handleSubmit} className="glass-card p-16 rounded-[60px] flex flex-col gap-8 relative overflow-hidden border-emerald-500/5">
+                    <form onSubmit={handleSubmit} className="glass-card p-8 sm:p-16 rounded-[32px] sm:rounded-[60px] flex flex-col gap-6 sm:gap-8 relative overflow-hidden border-emerald-500/5">
                         <div className="absolute inset-0 bg-noise opacity-[0.03]" />
-                        <div className="grid md:grid-cols-2 gap-8">
-                            <div className="space-y-4">
+                        <div className="grid md:grid-cols-2 gap-6 sm:gap-8">
+                            <div className="space-y-3 sm:space-y-4">
                                 <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 px-4">Your Name</label>
                                 <input
                                     name="name"
@@ -1047,7 +1047,7 @@ const Contact = () => {
                                     className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-sm text-white focus:border-emerald-500/50 outline-none transition-all placeholder:text-white/20"
                                 />
                             </div>
-                            <div className="space-y-4">
+                            <div className="space-y-3 sm:space-y-4">
                                 <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 px-4">Your Email</label>
                                 <input
                                     name="email"
@@ -1057,7 +1057,7 @@ const Contact = () => {
                                     className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-sm text-white focus:border-emerald-500/50 outline-none transition-all placeholder:text-white/20"
                                 />
                             </div>
-                            <div className="space-y-4 md:col-span-2">
+                            <div className="space-y-3 sm:space-y-4 md:col-span-2">
                                 <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 px-4">Project Type</label>
                                 <input
                                     name="project"
@@ -1068,7 +1068,7 @@ const Contact = () => {
                                 />
                             </div>
                         </div>
-                        <div className="space-y-4">
+                        <div className="space-y-3 sm:space-y-4">
                             <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 px-4">Your Message</label>
                             <textarea
                                 name="message"
@@ -1079,7 +1079,7 @@ const Contact = () => {
                             ></textarea>
                         </div>
                         <button type="submit" className="w-full">
-                            <MagneticButton className="w-full py-6 bg-emerald-600 rounded-3xl text-[11px] font-black uppercase tracking-[0.4em] flex items-center justify-center gap-4 hover:shadow-[0_0_40px_rgba(16,185,129,0.3)] group transition-all">
+                            <MagneticButton className="w-full py-5 sm:py-6 bg-emerald-600 rounded-3xl text-[10px] sm:text-[11px] font-black uppercase tracking-[0.3em] sm:tracking-[0.4em] flex items-center justify-center gap-4 hover:shadow-[0_0_40px_rgba(16,185,129,0.3)] group transition-all">
                                 {submitLabel} <Send size={16} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                             </MagneticButton>
                         </button>
@@ -1094,7 +1094,7 @@ const Contact = () => {
 
 const Footer = () => {
     return (
-        <footer className="py-24 px-8 bg-background border-t border-white/5 relative overflow-hidden font-outfit">
+        <footer className="py-16 sm:py-24 px-4 sm:px-8 bg-background border-t border-white/5 relative overflow-hidden font-outfit">
             <div className="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between items-center gap-12 relative z-10 text-glow">
                 <div className="flex flex-col items-center lg:items-start select-none">
                     <div className="text-4xl font-black tracking-tightest uppercase mb-4">
