@@ -619,6 +619,7 @@ interface Project {
     category: string;
     description: string;
     image: string;
+    imagePosition?: string;
     tags: string[];
     link: string;
 }
@@ -632,11 +633,14 @@ const ProjectCard = ({ project, index }: { project: Project, index: number }) =>
             transition={{ delay: index * 0.1 }}
             className="project-card group relative h-[500px] rounded-[50px] overflow-hidden border border-white/5 bg-[#05001a] perspective-2000"
         >
-            <div className="absolute inset-0 z-10 bg-gradient-to-t from-[#030014] via-[#030014]/40 to-transparent opacity-80" />
+            <div className="absolute inset-0 z-10 bg-gradient-to-t from-[#030014] via-[#030014]/35 to-transparent opacity-90" />
             <img
                 src={project.image}
                 alt={project.title}
-                className="absolute inset-0 w-full h-full object-cover transition-all duration-1000 group-hover:scale-110 group-hover:blur-sm opacity-50"
+                loading="lazy"
+                decoding="async"
+                style={{ objectPosition: project.imagePosition ?? 'center' }}
+                className="absolute inset-0 w-full h-full object-cover transition-all duration-1000 group-hover:scale-110 group-hover:blur-sm opacity-75"
             />
 
             <div className="absolute inset-0 z-20 p-12 flex flex-col justify-end transform-gpu transition-transform duration-700">
@@ -676,6 +680,7 @@ const Projects = () => {
             category: "Enterprise Web",
             description: "Web-based system with authentication and full CRUD operations for managing customer inquiries efficiently.",
             image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=800",
+            imagePosition: "center top",
             tags: ["Java", "JSP", "Servlets", "MySQL"],
             link: "https://github.com/Dineth111/Group-Project-Y2.S1-"
         },
@@ -683,7 +688,8 @@ const Projects = () => {
             title: "Personal Finance Tracker",
             category: "Mobile App",
             description: "Mobile app to manage income, expenses, budgets, and generate financial reports for real-world tracking use cases.",
-            image: "https://images.unsplash.com/photo-1518607882905-010e92e2e09d?auto=format&fit=crop&q=80&w=800",
+            image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=80&w=1200",
+            imagePosition: "center center",
             tags: ["Android", "Kotlin", "Local Database"],
             link: "https://github.com/Dineth111/financeapp"
         },
@@ -691,7 +697,8 @@ const Projects = () => {
             title: "Food Ordering App",
             category: "Mobile App",
             description: "Android application enabling menu browsing, cart management, and order tracking with seamless user experience.",
-            image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&q=80&w=800",
+            image: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&q=80&w=1200",
+            imagePosition: "center 42%",
             tags: ["Android", "Kotlin", "Firebase"],
             link: "https://github.com/Dineth111/FoddOrdering_App"
         },
@@ -699,7 +706,8 @@ const Projects = () => {
             title: "Income & Expense Management",
             category: "MERN Stack",
             description: "Full-stack web application featuring financial reports, interactive charts, and comprehensive expense tracking.",
-            image: "https://images.unsplash.com/photo-1526304640581-d334cdbbf35f?auto=format&fit=crop&q=80&w=800",
+            image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1200",
+            imagePosition: "center center",
             tags: ["MongoDB", "Express", "React", "Node.js"],
             link: "https://github.com/Dineth111/Income-and-Expense-management-system"
         },
@@ -708,6 +716,7 @@ const Projects = () => {
             category: "Logic Engine",
             description: "Advanced tournament management engine with automated scheduling and real-time ranking algorithms.",
             image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80&w=800",
+            imagePosition: "center center",
             tags: ["Java", "Spring Boot", "MySQL"],
             link: "https://github.com/Dineth111/Tournament-Management-system"
         },
@@ -716,6 +725,7 @@ const Projects = () => {
             category: "NLP/AI",
             description: "Sophisticated phonetical conversion engine for Singlish to Sinhala automated translation testing.",
             image: "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&q=80&w=800",
+            imagePosition: "center top",
             tags: ["Python", "NLTK", "Flask"],
             link: "https://github.com/Dineth111/Singlish-Sinhala-Automated-Translator-Testing"
         },
@@ -724,6 +734,7 @@ const Projects = () => {
             category: "Enterprise",
             description: "High-performance national airport portal with flight tracking and secure terminal systems.",
             image: "https://images.unsplash.com/photo-1464013778555-8e723c2f01f8?auto=format&fit=crop&q=80&w=800",
+            imagePosition: "center center",
             tags: ["React", "Node.js", "Express"],
             link: "https://github.com/Dineth111/srilanka-airport-website"
         },
@@ -732,6 +743,7 @@ const Projects = () => {
             category: "System Dev",
             description: "Cross-modular inventory system integrated with employee performance analytics and real-time tracking.",
             image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=800",
+            imagePosition: "center top",
             tags: ["MERN", "Redux", "JWT"],
             link: "https://github.com/Dineth111/Inventory_Management_System-MERN-STAC-Project"
         },
@@ -740,6 +752,7 @@ const Projects = () => {
             category: "Gen AI",
             description: "Cloud-based visual generation platform using advanced AI transformers for creative asset generation.",
             image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800",
+            imagePosition: "center 25%",
             tags: ["OpenAI API", "Node.js", "React"],
             link: "https://github.com/Dineth111/AI-Image-Genarator"
         }
