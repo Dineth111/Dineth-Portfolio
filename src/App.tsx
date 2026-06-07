@@ -147,7 +147,7 @@ const MagneticButton = ({ children, className, href }: { children: React.ReactNo
 
 const TechStack = () => {
     const skills = [
-        "React", "Node.js", "MongoDB", "Express", "TypeScript", "Next.js",
+        "React", "React Native", "Node.js", "MongoDB", "Express", "TypeScript", "Next.js",
         "Spring Boot", "MySQL", "Java", "Python", "Kotlin", "Dart", "Tailwind CSS", "Framer Motion"
     ];
 
@@ -467,63 +467,71 @@ const Skills = () => {
             name: "Dart",
             icon: <Smartphone />,
             color: "#06b6d4",
-            degree: 40,
+            degree: 36,
             level: "Advanced",
             details: "Flutter cross-platform apps, State management (Riverpod/Provider)"
         },
         {
+            name: "React Native",
+            icon: <Smartphone />,
+            color: "#10b981",
+            degree: 72,
+            level: "Advanced",
+            details: "Cross-platform mobile apps, Expo, Redux, Native modules integration"
+        },
+        {
             name: "React",
             icon: <Layout />,
-            color: "#10b981",
-            degree: 80,
+            color: "#06b6d4",
+            degree: 108,
             level: "Expert",
             details: "Enterprise-grade web apps, Framer Motion, Tailwind CSS excellence"
         },
         {
             name: "Node.js",
             icon: <Terminal />,
-            color: "#06b6d4",
-            degree: 120,
+            color: "#10b981",
+            degree: 144,
             level: "Intermediate",
             details: "Scalable REST APIs, Express, JWT Authentication, Microservices"
         },
         {
             name: "Java",
             icon: <Code2 />,
-            color: "#10b981",
-            degree: 160,
+            color: "#06b6d4",
+            degree: 180,
             level: "Advanced",
             details: "Spring Boot mastery, Object-Oriented patterns, Multi-threading"
         },
         {
             name: "Python",
             icon: <Terminal />,
-            color: "#06b6d4",
-            degree: 200,
+            color: "#10b981",
+            degree: 216,
             level: "Intermediate",
             details: "Automated scripts, NLP tools, Flask backend development"
         },
         {
             name: "MERN Stack",
             icon: <Database />,
-            color: "#10b981",
-            degree: 240,
+            color: "#06b6d4",
+            degree: 252,
             level: "Expert",
             details: "Full stack ecosystem, MongoDB modeling, complex real-time apps"
         },
         {
             name: "SQL/DB",
             icon: <Database />,
-            color: "#06b6d4",
-            degree: 280,
+            color: "#10b981",
+            degree: 288,
             level: "Advanced",
             details: "Relational database design, Complex queries, Optimization"
         },
         {
             name: "AWS/Cloud",
             icon: <Cloud />,
-            color: "#10b981",
-            degree: 320,
+            color: "#06b6d4",
+            degree: 324,
             level: "Intermediate",
             details: "Deployment strategies, EC2 management, Serverless functions"
         },
@@ -675,6 +683,24 @@ const ProjectCard = ({ project, index }: { project: Project, index: number }) =>
 
 const Projects = () => {
     const projects: Project[] = [
+        {
+            title: "E-Commerce Mobile App",
+            category: "Mobile App",
+            description: "AI-powered fashion e-commerce mobile app built with React Native (Expo). Features personalized outfit recommendations, visual search, AI stylist chat, and smart size suggestions powered by Claude API.",
+            image: "https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&q=80&w=800",
+            imagePosition: "center center",
+            tags: ["React Native", "Expo", "TypeScript", "Claude API"],
+            link: "https://github.com/Dineth111/E-commerce-Mobile-app"
+        },
+        {
+            title: "MERN Campus Hub",
+            category: "MERN Stack",
+            description: "An all-in-one university student portal built with MongoDB, Express, React, and Node.js. It streamlines campus life by integrating library reservations, hostel management, student club activities, and academic resources.",
+            image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&q=80&w=800",
+            imagePosition: "center center",
+            tags: ["MongoDB", "Express", "React", "Node.js"],
+            link: "https://github.com/Dineth111/MERN-campus-hub"
+        },
         {
             title: "Customer Care Management System",
             category: "Enterprise Web",
