@@ -696,7 +696,7 @@ const Projects = () => {
             title: "MERN Campus Hub",
             category: "MERN Stack",
             description: "An all-in-one university student portal built with MongoDB, Express, React, and Node.js. It streamlines campus life by integrating library reservations, hostel management, student club activities, and academic resources.",
-            image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&q=80&w=800",
+            image: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=800",
             imagePosition: "center center",
             tags: ["MongoDB", "Express", "React", "Node.js"],
             link: "https://github.com/Dineth111/MERN-campus-hub"
