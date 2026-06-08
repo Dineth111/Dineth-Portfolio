@@ -234,7 +234,7 @@ const Navbar = () => {
                         initial={{ opacity: 0, x: '100%' }}
                         animate={{ opacity: 1, x: 0 }}
                         exit={{ opacity: 0, x: '100%' }}
-                        className="md:hidden fixed inset-0 z-[90] bg-slate-950/98 backdrop-blur-3xl flex flex-col items-center justify-center space-y-10"
+                        className="md:hidden fixed inset-0 z-[90] bg-[#020617] backdrop-blur-3xl flex flex-col items-center justify-center space-y-10"
                     >
                         {navLinks.map((link) => (
                             <a
