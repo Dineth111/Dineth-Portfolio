@@ -231,21 +231,68 @@ const Navbar = () => {
             <AnimatePresence>
                 {isMobileMenuOpen && (
                     <motion.div
-                        initial={{ opacity: 0, x: '100%' }}
-                        animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: '100%' }}
-                        className="md:hidden fixed inset-0 z-[90] bg-[#020617] backdrop-blur-3xl flex flex-col items-center justify-center space-y-10"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        className="md:hidden fixed inset-0 z-[90] bg-[#020617] overflow-hidden"
                     >
-                        {navLinks.map((link) => (
-                            <a
-                                key={link.name}
-                                href={link.href}
-                                onClick={() => setIsMobileMenuOpen(false)}
-                                className="text-3xl font-black uppercase tracking-tight hover:text-emerald-500 transition-colors"
+                        {/* Decorative background glow */}
+                        <div className="absolute -bottom-20 -left-20 w-[300px] h-[300px] bg-emerald-500/10 rounded-full blur-[100px] pointer-events-none animate-pulse" />
+                        <div className="absolute -top-20 -right-20 w-[300px] h-[300px] bg-cyan-500/10 rounded-full blur-[100px] pointer-events-none animate-pulse" />
+                        
+                        <div className="h-full flex flex-col justify-between px-8 py-24 relative z-10">
+                            {/* Menu Header */}
+                            <div className="flex items-center gap-3">
+                                <div className="w-8 h-8 bg-emerald-600 rounded-lg flex items-center justify-center text-white font-black shadow-[0_0_15px_rgba(16,185,129,0.3)]">
+                                    D
+                                </div>
+                                <span className="text-sm font-bold tracking-[0.3em] uppercase text-slate-400">Navigation</span>
+                            </div>
+
+                            {/* Main Links */}
+                            <div className="flex flex-col space-y-6 my-auto">
+                                {navLinks.map((link, idx) => (
+                                    <motion.a
+                                        key={link.name}
+                                        href={link.href}
+                                        onClick={() => setIsMobileMenuOpen(false)}
+                                        initial={{ opacity: 0, x: -30 }}
+                                        animate={{ opacity: 1, x: 0 }}
+                                        transition={{ delay: idx * 0.07, type: "spring", stiffness: 100 }}
+                                        className="text-4xl font-black uppercase tracking-wider text-slate-100 hover:text-emerald-400 transition-colors flex items-baseline gap-4 group italic"
+                                    >
+                                        <span className="text-xs font-bold text-emerald-500/50 not-italic tracking-widest">
+                                            {String(idx + 1).padStart(2, '0')}
+                                        </span>
+                                        <span>
+                                            {link.name}
+                                        </span>
+                                        <ChevronRight className="w-5 h-5 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-emerald-400" />
+                                    </motion.a>
+                                ))}
+                            </div>
+
+                            {/* Menu Footer */}
+                            <motion.div 
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: navLinks.length * 0.07 + 0.1 }}
+                                className="border-t border-white/5 pt-8 flex flex-col gap-6"
                             >
-                                {link.name}
-                            </a>
-                        ))}
+                                <div className="flex gap-4">
+                                    <a href="https://github.com/Dineth111" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-slate-400 hover:text-emerald-400 hover:bg-white/10 transition-all border border-white/5">
+                                        <Github size={18} />
+                                    </a>
+                                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-slate-400 hover:text-emerald-400 hover:bg-white/10 transition-all border border-white/5">
+                                        <Linkedin size={18} />
+                                    </a>
+                                    <a href="mailto:dinethsanjula@gmail.com" className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-slate-400 hover:text-emerald-400 hover:bg-white/10 transition-all border border-white/5">
+                                        <Mail size={18} />
+                                    </a>
+                                </div>
+                                <p className="text-[9px] uppercase font-bold tracking-[0.2em] text-slate-500">© 2026 Dineth Sanjula. All rights reserved.</p>
+                            </motion.div>
+                        </div>
                     </motion.div>
                 )}
             </AnimatePresence>
