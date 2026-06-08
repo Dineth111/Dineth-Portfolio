@@ -306,13 +306,13 @@ const Hero = () => {
                     initial={{ opacity: 0, scale: 0.9, rotate: 5 }}
                     animate={{ opacity: 1, scale: 1, rotate: 0 }}
                     transition={{ duration: 1.5 }}
-                    className="relative hidden lg:block"
+                    className="relative block lg:block mt-16 lg:mt-0 w-[85%] max-w-[320px] sm:max-w-[400px] mx-auto lg:max-w-none"
                 >
-                    <div className="relative z-10 p-4 glass-card rounded-[80px] overflow-hidden group">
+                    <div className="relative z-10 p-3 sm:p-4 glass-card rounded-[40px] sm:rounded-[80px] overflow-hidden group">
                         <img
                             src={profilePhoto}
                             alt="Dineth Sanjula"
-                            className="w-full aspect-square object-cover rounded-[70px] grayscale transition-all duration-1000 group-hover:grayscale-0 group-hover:scale-110"
+                            className="w-full aspect-square object-cover rounded-[30px] sm:rounded-[70px] grayscale transition-all duration-1000 group-hover:grayscale-0 group-hover:scale-110"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-[#030014] via-transparent to-transparent opacity-50" />
                     </div>
@@ -321,15 +321,15 @@ const Hero = () => {
                     <motion.div
                         animate={{ y: [0, -20, 0] }}
                         transition={{ duration: 6, repeat: Infinity }}
-                        className="absolute -bottom-10 -left-10 glass-card p-10 rounded-3xl z-20 border-emerald-500/20"
+                        className="absolute -bottom-6 -left-6 sm:-bottom-10 sm:-left-10 glass-card p-4 sm:p-10 rounded-2xl sm:rounded-3xl z-20 border-emerald-500/20"
                     >
-                        <div className="flex items-center gap-4 mb-2">
-                            <div className="w-12 h-12 bg-emerald-600 rounded-xl flex items-center justify-center shadow-[0_0_20px_rgba(16,185,129,0.3)]">
-                                <Code2 className="text-white" />
+                        <div className="flex items-center gap-2 sm:gap-4 mb-1 sm:mb-2">
+                            <div className="w-8 h-8 sm:w-12 sm:h-12 bg-emerald-600 rounded-lg sm:rounded-xl flex items-center justify-center shadow-[0_0_20px_rgba(16,185,129,0.3)]">
+                                <Code2 className="text-white w-4 h-4 sm:w-6 sm:h-6" />
                             </div>
                             <div>
-                                <h4 className="text-3xl font-black italic text-white text-glow-emerald">15+</h4>
-                                <p className="text-[9px] uppercase font-bold tracking-widest text-slate-500">Projects Done</p>
+                                <h4 className="text-xl sm:text-3xl font-black italic text-white text-glow-emerald">15+</h4>
+                                <p className="text-[7px] sm:text-[9px] uppercase font-bold tracking-widest text-slate-500">Projects Done</p>
                             </div>
                         </div>
                     </motion.div>
@@ -337,9 +337,9 @@ const Hero = () => {
                     <motion.div
                         animate={{ y: [0, 20, 0] }}
                         transition={{ duration: 5, repeat: Infinity, delay: 0.5 }}
-                        className="absolute top-10 -right-10 glass-card p-6 rounded-3xl z-20 border-emerald-500/20"
+                        className="absolute top-6 -right-6 sm:top-10 sm:-right-10 glass-card p-4 sm:p-6 rounded-2xl sm:rounded-3xl z-20 border-emerald-500/20"
                     >
-                        <span className="text-emerald-400 font-black text-xs block mb-1">SLIIT KANDY UNI</span>
+                        <span className="text-emerald-400 font-black text-[9px] sm:text-xs block mb-1">SLIIT KANDY UNI</span>
                         <div className="h-1 w-full bg-emerald-500/50 rounded-full" />
                     </motion.div>
                 </motion.div>
@@ -551,7 +551,7 @@ const Skills = () => {
                 </div>
 
                 <div
-                    className="relative w-full max-w-[600px] aspect-[4/5] sm:aspect-square flex items-center justify-center transform-gpu"
+                    className="relative w-full max-w-[600px] flex flex-col items-center justify-center sm:aspect-square transform-gpu"
                 >
                     {/* Dynamic Central Hub */}
                     <AnimatePresence mode="wait">
@@ -560,18 +560,18 @@ const Skills = () => {
                             initial={{ opacity: 0, scale: 0.8, rotateY: -90 }}
                             animate={{ opacity: 1, scale: 1, rotateY: 0 }}
                             exit={{ opacity: 0, scale: 0.8, rotateY: 90 }}
-                            className="w-40 h-40 sm:w-48 sm:h-48 md:w-64 md:h-64 rounded-full glass-card border-2 border-emerald-500/30 flex flex-col items-center justify-center z-20 shadow-[0_0_80px_rgba(16,185,129,0.2)] p-5 sm:p-8 text-center"
+                            className="w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 rounded-full glass-card border-2 border-emerald-500/30 flex flex-col items-center justify-center z-20 shadow-[0_0_80px_rgba(16,185,129,0.2)] p-4 sm:p-6 md:p-8 text-center"
                         >
                             <motion.div
                                 animate={{ y: [0, -5, 0] }}
                                 transition={{ duration: 3, repeat: Infinity }}
                                 style={{ color: activeSkill.color }}
                             >
-                                {React.cloneElement(activeSkill.icon as React.ReactElement, { size: 40 })}
+                                {React.cloneElement(activeSkill.icon as React.ReactElement, { className: "w-8 h-8 sm:w-10 sm:h-10" })}
                             </motion.div>
-                            <h3 className="text-white font-black text-xl sm:text-2xl mt-4 uppercase tracking-tight italic">{activeSkill.name}</h3>
-                            <span className="bg-emerald-500/10 text-emerald-400 text-[9px] font-bold px-3 py-1 rounded-full uppercase tracking-widest mt-2">{activeSkill.level}</span>
-                            <p className="text-slate-500 text-[10px] leading-relaxed mt-3 sm:mt-4 font-light max-w-[80%] mx-auto">{activeSkill.details}</p>
+                            <h3 className="text-white font-black text-lg sm:text-xl md:text-2xl mt-2 sm:mt-4 uppercase tracking-tight italic">{activeSkill.name}</h3>
+                            <span className="bg-emerald-500/10 text-emerald-400 text-[8px] sm:text-[9px] font-bold px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full uppercase tracking-widest mt-1 sm:mt-2">{activeSkill.level}</span>
+                            <p className="text-slate-500 text-[9px] sm:text-[10px] leading-relaxed mt-2 sm:mt-4 font-light max-w-[85%] mx-auto">{activeSkill.details}</p>
                         </motion.div>
                     </AnimatePresence>
 
@@ -616,6 +616,22 @@ const Skills = () => {
                     {/* Orbital Paths */}
                     <div className="hidden sm:block absolute w-[600px] h-[600px] border border-white/5 rounded-full z-0 pointer-events-none" />
                     <div className="hidden sm:block absolute w-[450px] h-[450px] border border-emerald-500/5 rounded-full z-0 pointer-events-none" />
+
+                    {/* Mobile Skill Selector */}
+                    <div className="flex flex-wrap justify-center gap-3 mt-12 sm:hidden relative z-20 max-w-[340px] mx-auto">
+                        {skills.map((skill, idx) => (
+                            <motion.button
+                                key={idx}
+                                onClick={() => setActiveSkill(skill)}
+                                whileTap={{ scale: 0.95 }}
+                                className={`w-12 h-12 rounded-xl glass-card border flex items-center justify-center transition-all duration-300
+                                    ${activeSkill.name === skill.name ? 'border-emerald-500 bg-emerald-500/10 shadow-[0_0_15px_rgba(16,185,129,0.3)]' : 'border-white/10'}`}
+                                style={{ color: skill.color }}
+                            >
+                                {React.cloneElement(skill.icon as React.ReactElement, { className: "w-5 h-5" })}
+                            </motion.button>
+                        ))}
+                    </div>
                 </div>
             </div>
         </section>
