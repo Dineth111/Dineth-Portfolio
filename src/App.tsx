@@ -788,7 +788,7 @@ const Projects = () => {
             title: "GoviGana Mobile App",
             category: "Mobile App",
             description: "Vegetable and fruit price tracking mobile app for Sri Lankan farmers. Features real-time price monitoring, offline caching, and direct market analytics.",
-            image: "https://images.unsplash.com/photo-1592417817098-8f3d6eb19675?auto=format&fit=crop&q=80&w=800",
+            image: "https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&q=80&w=800",
             imagePosition: "center center",
             tags: ["React Native", "Expo", "Supabase", "TypeScript"],
             link: "https://github.com/Dineth111/govigana-mobileapp"
