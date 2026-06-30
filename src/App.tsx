@@ -426,7 +426,7 @@ const About = () => {
                 <div className="mb-24">
                     <span className="text-emerald-500 text-[10px] font-black uppercase tracking-[0.8em] block mb-6">About Me</span>
                     <h2 className="text-4xl sm:text-6xl md:text-[100px] font-black tracking-tight leading-none uppercase inline-block bg-emerald-600 px-5 py-4 sm:px-8 sm:py-6 md:px-12 md:py-8 rounded-2xl">
-                        My <span className="text-white italic">Core</span> <br />Skills<span className="text-white">.</span>
+                        My <span className="text-white italic">Core</span> <br />Profile<span className="text-white">.</span>
                     </h2>
                 </div>
 
