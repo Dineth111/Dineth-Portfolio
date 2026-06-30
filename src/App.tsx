@@ -903,10 +903,7 @@ const Projects = () => {
                         Selected <br /><span className="text-white">Projects.</span>
                     </h2>
                 </div>
-                <div className="max-w-xs text-right hidden lg:block">
-                    <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest leading-relaxed [word-spacing:0.2em] mb-8">Selected works representing the intersection of high-end design and robust performance architecture.</p>
-                    <MagneticButton className="px-10 py-4 bg-white/5 border border-white/10 rounded-full text-[9px] font-black uppercase tracking-widest [word-spacing:0.2em] hover:bg-white/10">Browse GitHub Archive</MagneticButton>
-                </div>
+
 
                 <div className="grid md:grid-cols-2 gap-5 sm:gap-8">
                     {projects.map((project, idx) => (
