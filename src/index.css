@@ -53,14 +53,16 @@
     position: relative;
   }
 
-  .bg-noise::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background-image: url("https://grainy-gradients.vercel.app/noise.svg");
-    opacity: 0.03;
-    pointer-events: none;
-    z-index: 9999;
+  @media (min-width: 768px) {
+    .bg-noise::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+      opacity: 0.03;
+      pointer-events: none;
+      z-index: 9999;
+    }
   }
 }
 

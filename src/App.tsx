@@ -25,30 +25,50 @@ import {
 import profilePhoto from './assets/profile.jpg';
 
 const BackgroundLayer = () => {
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth < 768);
+        };
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
+
     return (
         <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
             {/* Moving Grid */}
             <div className="absolute inset-0 animate-grid opacity-[0.03]" />
 
             {/* Ambient Drifting Nebulae */}
-            <motion.div
-                animate={{
-                    scale: [1, 1.2, 1],
-                    x: [0, 50, 0],
-                    y: [0, -30, 0]
-                }}
-                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                className="absolute top-[-10%] left-[-10%] w-[70vw] h-[70vw] mask-radial opacity-10 bg-emerald-500/20 blur-[120px] rounded-full"
-            />
-            <motion.div
-                animate={{
-                    scale: [1.2, 1, 1.2],
-                    x: [0, -50, 0],
-                    y: [0, 40, 0]
-                }}
-                transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-                className="absolute bottom-[-10%] right-[-10%] w-[60vw] h-[60vw] mask-radial opacity-10 bg-cyan-500/20 blur-[120px] rounded-full"
-            />
+            {!isMobile ? (
+                <>
+                    <motion.div
+                        animate={{
+                            scale: [1, 1.2, 1],
+                            x: [0, 50, 0],
+                            y: [0, -30, 0]
+                        }}
+                        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                        className="absolute top-[-10%] left-[-10%] w-[70vw] h-[70vw] mask-radial opacity-10 bg-emerald-500/20 blur-[120px] rounded-full"
+                    />
+                    <motion.div
+                        animate={{
+                            scale: [1.2, 1, 1.2],
+                            x: [0, -50, 0],
+                            y: [0, 40, 0]
+                        }}
+                        transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+                        className="absolute bottom-[-10%] right-[-10%] w-[60vw] h-[60vw] mask-radial opacity-10 bg-cyan-500/20 blur-[120px] rounded-full"
+                    />
+                </>
+            ) : (
+                <>
+                    <div className="absolute top-[-10%] left-[-10%] w-[70vw] h-[70vw] mask-radial opacity-10 bg-emerald-500/20 blur-[60px] rounded-full" />
+                    <div className="absolute bottom-[-10%] right-[-10%] w-[60vw] h-[60vw] mask-radial opacity-10 bg-cyan-500/20 blur-[60px] rounded-full" />
+                </>
+            )}
         </div>
     );
 };
@@ -59,6 +79,10 @@ const CustomCursor = () => {
     const [cursorText, setCursorText] = useState("");
 
     useEffect(() => {
+        // Prevent event listeners on mobile / touch screen devices
+        const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+        if (isTouch) return;
+
         const handleMouseMove = (e: MouseEvent) => {
             setPosition({ x: e.clientX, y: e.clientY });
         };
@@ -586,6 +610,16 @@ const Skills = () => {
 
     const [activeSkill, setActiveSkill] = useState(skills[0]);
     const [isPaused, setIsPaused] = useState(false);
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth < 640);
+        };
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
 
     return (
         <section id="skills" className="py-24 sm:py-60 px-4 sm:px-8 relative overflow-hidden bg-background perspective-2000">
@@ -626,43 +660,47 @@ const Skills = () => {
                     <div className="w-64 h-64 sm:w-80 sm:h-80 bg-emerald-600/10 rounded-full blur-[100px] absolute z-0 animate-pulse" />
 
                     {/* Rotating Intelligence Ring */}
-                    <motion.div
-                        className="absolute inset-0 flex items-center justify-center"
-                        animate={{ rotate: isPaused ? undefined : 360 }}
-                        transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
-                        style={{ transformStyle: 'preserve-3d' }}
-                    >
-                        {skills.map((skill, idx) => (
-                            <div
-                                key={idx}
-                                className="hidden sm:block absolute w-24 h-24 md:w-28 md:h-28"
-                                style={{
-                                    transform: `rotate(${skill.degree}deg) translateY(-300px) rotate(-${skill.degree}deg)`,
-                                }}
+                    {!isMobile && (
+                        <>
+                            <motion.div
+                                className="absolute inset-0 flex items-center justify-center"
+                                animate={{ rotate: isPaused ? undefined : 360 }}
+                                transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+                                style={{ transformStyle: 'preserve-3d' }}
                             >
-                                <motion.div
-                                    onMouseEnter={() => {
-                                        setActiveSkill(skill);
-                                        setIsPaused(true);
-                                    }}
-                                    onMouseLeave={() => setIsPaused(false)}
-                                    whileHover={{ scale: 1.2, zIndex: 100 }}
-                                    className={`w-full h-full rounded-2xl glass-card border flex flex-col items-center justify-center gap-2 p-4 shadow-3xl cursor-pointer transition-all backdrop-blur-3xl
-                                        ${activeSkill.name === skill.name ? 'border-emerald-500 shadow-[0_0_30px_rgba(16,185,129,0.2)]' : 'border-white/10'}`}
-                                >
-                                    <div className="transition-transform duration-500 group-hover:scale-110" style={{ color: skill.color }}>
-                                        {React.cloneElement(skill.icon as React.ReactElement, { size: 24 })}
+                                {skills.map((skill, idx) => (
+                                    <div
+                                        key={idx}
+                                        className="hidden sm:block absolute w-24 h-24 md:w-28 md:h-28"
+                                        style={{
+                                            transform: `rotate(${skill.degree}deg) translateY(-300px) rotate(-${skill.degree}deg)`,
+                                        }}
+                                    >
+                                        <motion.div
+                                            onMouseEnter={() => {
+                                                setActiveSkill(skill);
+                                                setIsPaused(true);
+                                            }}
+                                            onMouseLeave={() => setIsPaused(false)}
+                                            whileHover={{ scale: 1.2, zIndex: 100 }}
+                                            className={`w-full h-full rounded-2xl glass-card border flex flex-col items-center justify-center gap-2 p-4 shadow-3xl cursor-pointer transition-all backdrop-blur-3xl
+                                                ${activeSkill.name === skill.name ? 'border-emerald-500 shadow-[0_0_30px_rgba(16,185,129,0.2)]' : 'border-white/10'}`}
+                                        >
+                                            <div className="transition-transform duration-500 group-hover:scale-110" style={{ color: skill.color }}>
+                                                {React.cloneElement(skill.icon as React.ReactElement, { size: 24 })}
+                                            </div>
+                                            <span className="text-[8px] font-black text-white uppercase tracking-widest text-center">{skill.name}</span>
+                                        </motion.div>
+                                        <div className="absolute top-1/2 left-1/2 w-0.5 h-[300px] bg-gradient-to-t from-emerald-500/20 to-transparent -translate-x-1/2 origin-bottom -z-10" />
                                     </div>
-                                    <span className="text-[8px] font-black text-white uppercase tracking-widest text-center">{skill.name}</span>
-                                </motion.div>
-                                <div className="absolute top-1/2 left-1/2 w-0.5 h-[300px] bg-gradient-to-t from-emerald-500/20 to-transparent -translate-x-1/2 origin-bottom -z-10" />
-                            </div>
-                        ))}
-                    </motion.div>
+                                ))}
+                            </motion.div>
 
-                    {/* Orbital Paths */}
-                    <div className="hidden sm:block absolute w-[600px] h-[600px] border border-white/5 rounded-full z-0 pointer-events-none" />
-                    <div className="hidden sm:block absolute w-[450px] h-[450px] border border-emerald-500/5 rounded-full z-0 pointer-events-none" />
+                            {/* Orbital Paths */}
+                            <div className="hidden sm:block absolute w-[600px] h-[600px] border border-white/5 rounded-full z-0 pointer-events-none" />
+                            <div className="hidden sm:block absolute w-[450px] h-[450px] border border-emerald-500/5 rounded-full z-0 pointer-events-none" />
+                        </>
+                    )}
 
                     {/* Mobile Skill Selector */}
                     <div className="flex flex-wrap justify-center gap-3 mt-12 sm:hidden relative z-20 max-w-[340px] mx-auto">
@@ -746,6 +784,15 @@ const ProjectCard = ({ project, index }: { project: Project, index: number }) =>
 
 const Projects = () => {
     const projects: Project[] = [
+        {
+            title: "GoviGana Mobile App",
+            category: "Mobile App",
+            description: "Vegetable and fruit price tracking mobile app for Sri Lankan farmers. Features real-time price monitoring, offline caching, and direct market analytics.",
+            image: "https://images.unsplash.com/photo-1592417817098-8f3d6eb19675?auto=format&fit=crop&q=80&w=800",
+            imagePosition: "center center",
+            tags: ["React Native", "Expo", "Supabase", "TypeScript"],
+            link: "https://github.com/Dineth111/govigana-mobileapp"
+        },
         {
             title: "E-Commerce Mobile App",
             category: "Mobile App",
