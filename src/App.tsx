@@ -458,7 +458,7 @@ const About = () => {
                     >
                         <Smartphone className="w-10 h-10 text-emerald-500 mb-6" />
                         <h4 className="text-lg sm:text-xl font-bold uppercase tracking-tight mb-2">Mobile Apps</h4>
-                        <p className="text-sm text-slate-500 leading-relaxed font-light">Cross-platform development using Kotlin & Dart for high-performance applications.</p>
+                        <p className="text-sm text-slate-500 leading-relaxed font-light">Cross-platform development using React Native, Kotlin & Dart for high-performance applications.</p>
                     </motion.div>
 
                     <motion.div
